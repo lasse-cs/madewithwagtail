@@ -202,6 +202,15 @@ class TestBuildProposal:
         assert proposal.site_type == []
         assert proposal.capability == []
 
+    def test_developer_url_without_scheme_gets_https_prefix(self):
+        body = FORM_BODY.replace(
+            "### Developer URL\n\nhttps://example.co", "### Developer URL\n\nexample.co"
+        )
+        proposal = ps.build_proposal(
+            body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
+        )
+        assert proposal.developer_url == "https://example.co"
+
     def test_rejects_private_url(self):
         class Bad(Exception):
             pass

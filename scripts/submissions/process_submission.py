@@ -1576,9 +1576,13 @@ def build_proposal(
 
     # Optional fields.
     developer_url = ""
-    if field("Developer URL"):
+    # Submitters often enter a bare domain ("madewithwagtail.org");
+    # assume https rather than rejecting the URL outright.
+    if raw := field("Developer URL"):
+        if not raw.lower().startswith("http"):
+            raw = f"https://{raw}"
         try:
-            developer_url = check_public_url(field("Developer URL"), resolver=resolver)
+            developer_url = check_public_url(raw, resolver=resolver)
         except Exception as exc:
             reasons.append(
                 f"The developer URL was rejected: {_validation_message(exc)}"
