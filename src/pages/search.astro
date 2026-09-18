@@ -1,0 +1,139 @@
+---
+import Icon from '../components/Icon.astro';
+import { withBase } from '../helpers.ts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Search"
+  description="Search the Wagtail sites, developers, and facets in the Made with Wagtail showcase."
+>
+  <div class="site-content content-width">
+    <div class="banner">
+      <h1>Search</h1>
+      <div class="intro">
+        <p>Search the sites, developers, and collections in the showcase.</p>
+      </div>
+    </div>
+
+    <search class="search-box">
+      <form class="search-form" data-search-form>
+        <input
+          type="search"
+          name="q"
+          placeholder="Search sites, developers, sectors…"
+          aria-label="Search the showcase"
+          autocomplete="off"
+          data-search-input
+        >
+        <button type="submit" class="btn">
+          <Icon name="search" class="i--small u-middle" />
+          <span class="u-sr-only">Search</span>
+        </button>
+      </form>
+    </search>
+
+    <p class="search-status" data-search-status hidden></p>
+    <div class="search-results" data-search-results aria-live="polite"></div>
+
+    <noscript>
+      <p>
+        Search needs JavaScript. Browse <a href={withBase('/sites/')}>sites by sector</a> or{' '}
+        <a href={withBase('/developers/')}>developers</a>
+        instead.
+      </p>
+    </noscript>
+  </div>
+</BaseLayout>
+
+<script>
+// Pagefind indexes the built site at build time and is served from
+// /pagefind/ — available in production builds only.
+const form = document.querySelector('[data-search-form]') as HTMLFormElement;
+const input = document.querySelector('[data-search-input]') as HTMLInputElement;
+const status = document.querySelector('[data-search-status]') as HTMLElement;
+const results = document.querySelector('[data-search-results]') as HTMLElement;
+
+type PagefindResult = {
+  data: () => Promise<{ url: string; excerpt: string; meta: { title?: string } }>;
+};
+type Pagefind = { search: (query: string) => Promise<{ results: PagefindResult[] }> };
+
+let pagefind: Pagefind | null = null;
+
+async function loadPagefind(): Promise<Pagefind | null> {
+  try {
+    const url = '/pagefind/pagefind.js';
+    return (await import(/* @vite-ignore */ url)) as Pagefind;
+  } catch {
+    return null;
+  }
+}
+
+function renderMessage(message: string) {
+  status.textContent = message;
+  status.hidden = false;
+}
+
+function renderResults(items: { url: string; excerpt: string; meta: { title?: string } }[]) {
+  results.innerHTML = '';
+  for (const item of items) {
+    const element = document.createElement('div');
+    element.className = 'search-results__item';
+    const title = document.createElement('h3');
+    title.className = 'search-results__title';
+    const link = document.createElement('a');
+    link.href = item.url;
+    link.textContent = item.meta.title ?? item.url;
+    title.append(link);
+    const excerpt = document.createElement('p');
+    excerpt.className = 'search-results__description';
+    excerpt.innerHTML = item.excerpt;
+    element.append(title, excerpt);
+    results.append(element);
+  }
+}
+
+let debounce: ReturnType<typeof setTimeout> | undefined;
+const search = async () => {
+  const query = input.value.trim();
+  if (query.length < 2) {
+    status.hidden = true;
+    results.innerHTML = '';
+    return;
+  }
+  if (!pagefind) return;
+  const response = await pagefind.search(query);
+  const items = await Promise.all(response.results.slice(0, 20).map((result) => result.data()));
+  renderMessage(
+    items.length === 0
+      ? `No results for “${query}”.`
+      : `${response.results.length} result${response.results.length === 1 ? '' : 's'} for “${query}”.`,
+  );
+  renderResults(items);
+};
+
+async function init() {
+  pagefind = await loadPagefind();
+  if (!pagefind) {
+    renderMessage('Search is available on the production site only.');
+    return;
+  }
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    search();
+  });
+  input.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(search, 200);
+  });
+  // Prefill from ?q= for search links from other pages.
+  const query = new URLSearchParams(window.location.search).get('q');
+  if (query) {
+    input.value = query;
+    search();
+  }
+}
+
+init();
+</script>

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -36,6 +36,7 @@
     "@astrojs/check": "^0.9.10",
     "@biomejs/biome": "^2.5.12",
     "@wagtail/stylelint-config-wagtail": "^2.0.0",
+    "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "sass": "^1.101.0",
     "stylelint": "^17.14.1",

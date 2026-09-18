@@ -211,7 +211,7 @@ function navIsActive(path: string): boolean {
       </svg>
     </div>
 
-    <div class="site-header">
+    <div class="site-header" data-pagefind-ignore>
       <div class="content-width">
         <div class="grid">
           <div class="one-whole--small one-third">
@@ -239,6 +239,9 @@ function navIsActive(path: string): boolean {
                 >
               </li>
               <li class="nav__item">
+                <a href={withBase('/search/')} class="nav__link">Search</a>
+              </li>
+              <li class="nav__item">
                 <a
                   href={withBase('/submit-your-site/')}
                   class:list={['nav__link', { 'is-active': navIsActive('/submit-your-site/') }]}
@@ -255,7 +258,7 @@ function navIsActive(path: string): boolean {
       <slot />
     </div>
 
-    <div class="site-footer">
+    <div class="site-footer" data-pagefind-ignore>
       <div class="grid content-width grid-stack">
         <div class="one-half--medium">
           <h4>Get your Wagtail site featured on Made with Wagtail</h4>
