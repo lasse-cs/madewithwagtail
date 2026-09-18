@@ -62,7 +62,7 @@ function getCooperator(cooperatorSlug: string) {
     </div>
 
     <div class="grid grid-stack site-listing">
-      {filteredSites.map((site) => {
+      {filteredSites.map((site, index) => {
         const dev = devMap.get(site.id.split('/')[0]);
         return (
           <SiteCard
@@ -72,6 +72,7 @@ function getCooperator(cooperatorSlug: string) {
             developerUrl={withBase(dev ? `/developers/${dev.id}/` : '/developers/')}
             id={site.id}
             siteUrl={site.data.site_url}
+            eager={index < 3}
             inCooperationWith={site.data.in_cooperation_with_slug
               ? getCooperator(site.data.in_cooperation_with_slug)?.data.title ?? null
               : null

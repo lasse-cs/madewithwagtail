@@ -75,6 +75,10 @@ const ogImage = screenshot
                 alt={siteEntry.data.title}
                 title={siteEntry.data.title}
                 class="img--responsive"
+                width={screenshot.width}
+                height={screenshot.height}
+                fetchpriority="high"
+                decoding="async"
               />
             )}
           </div>

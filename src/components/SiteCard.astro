@@ -14,6 +14,8 @@ interface Props {
   siteUrl: string | null;
   inCooperationWith?: string | null;
   inCooperationWithUrl?: string | null;
+  // Load the screenshot eagerly, for cards above the fold on listings.
+  eager?: boolean;
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   siteUrl,
   inCooperationWith,
   inCooperationWithUrl,
+  eager,
 } = Astro.props;
 const screenshot = lookupImage(id, '.fill-1200x996.webp');
 ---
@@ -33,7 +36,14 @@ const screenshot = lookupImage(id, '.fill-1200x996.webp');
   <div class="card card--link">
     <a href={url} class="project-image">
       {screenshot && (
-        <img src={screenshot.src} alt={title} loading="lazy" />
+        <img
+          src={screenshot.src}
+          alt={title}
+          width={screenshot.width}
+          height={screenshot.height}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+        />
       )}
     </a>
     <div class="project__links">

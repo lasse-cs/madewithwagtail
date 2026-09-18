@@ -70,7 +70,7 @@ const lastSite = page.end + 1;
     </div>
 
     <div class="grid grid-stack site-listing">
-      {page.data.map((site: PaginatedSite) => {
+      {page.data.map((site: PaginatedSite, index: number) => {
         const dev = developerMap.get(site.id.split('/')[0]);
         return (
           <SiteCard
@@ -80,6 +80,7 @@ const lastSite = page.end + 1;
             developerUrl={withBase(dev ? `/developers/${dev.id}/` : '/developers/')}
             id={site.id}
             siteUrl={site.data.site_url}
+            eager={index < 3}
           />
         );
       })}
