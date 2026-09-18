@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
 """Periodically refresh showcase listings: sites and developer profiles.
 
 Subcommands (CLI wiring lands with the report/summary tasks):
@@ -52,9 +52,20 @@ from pipeline.net import fetch_page
 from pipeline.proposal import utcnow
 
 REPORT_FIELDS = [
-    "kind", "developer_slug", "site_slug", "name", "url", "final_url",
-    "status", "is_wagtail", "detected_title", "title_match",
-    "detected_technologies", "changes", "candidate_profiles", "flags",
+    "kind",
+    "developer_slug",
+    "site_slug",
+    "name",
+    "url",
+    "final_url",
+    "status",
+    "is_wagtail",
+    "detected_title",
+    "title_match",
+    "detected_technologies",
+    "changes",
+    "candidate_profiles",
+    "flags",
     "checked_at",
 ]
 
@@ -197,7 +208,7 @@ def refresh_site(
 
     try:
         final_url, html = fetch(client, url)
-    except httpx.HTTPError as exc:
+    except (httpx.HTTPError, httpx.InvalidURL) as exc:
         row["status"], row["flags"] = "dead", f"fetch-failed: {exc}"
         return row
     except Exception as exc:  # e.g. too many redirects, blocked URL
@@ -215,9 +226,7 @@ def refresh_site(
 
     detected_title = extract_site_name(html)
     row["detected_title"] = detected_title or ""
-    title_match = normalize_title(detected_title) == normalize_title(
-        data.get("title")
-    )
+    title_match = normalize_title(detected_title) == normalize_title(data.get("title"))
     row["title_match"] = "true" if title_match else "false"
     if not title_match and detected_title:
         flags.append("title-mismatch")
@@ -287,13 +296,18 @@ def extract_profile_links(html: str, base_url: str) -> list[str]:
     seen: set[str] = set()
     links: list[str] = []
     for href in PROFILE_LINK_HREF_RE.findall(html):
+        if not (href := href.strip()):
+            continue
         try:
             absolute = str(base.join(href))
-        except ValueError:
+        except httpx.InvalidURL:
             continue
-        host = (urlsplit(absolute).hostname or "").casefold().removesuffix(
-            "."
-        ).removeprefix("www.")
+        host = (
+            (urlsplit(absolute).hostname or "")
+            .casefold()
+            .removesuffix(".")
+            .removeprefix("www.")
+        )
         if host not in PROFILE_LINK_DOMAINS:
             continue
         if absolute not in seen:
@@ -347,7 +361,7 @@ def refresh_profile(
 
     try:
         final_url, html = fetch(client, company_url)
-    except httpx.HTTPError as exc:
+    except (httpx.HTTPError, httpx.InvalidURL) as exc:
         row["status"], row["flags"] = "dead", f"fetch-failed: {exc}"
         return row
     except Exception as exc:
@@ -365,7 +379,9 @@ def refresh_profile(
     unambiguous = [
         link
         for link in candidates
-        if link_matches_developer(link, str(data.get("title") or ""), data.get("github_user"))
+        if link_matches_developer(
+            link, str(data.get("title") or ""), data.get("github_user")
+        )
     ]
     current = list(data.get("online_profiles") or [])
     merged = current + [link for link in unambiguous if link not in current]
@@ -409,7 +425,9 @@ def write_report(rows: list[dict], out_dir: Path) -> Path:
 
 
 def console_summary(rows: list[dict], *, dry_run: bool = False) -> None:
-    print(f"Scanned {len(rows)} entries{' (dry run — nothing written)' if dry_run else ''}.")
+    print(
+        f"Scanned {len(rows)} entries{' (dry run — nothing written)' if dry_run else ''}."
+    )
     by_status: dict[str, int] = {}
     for row in rows:
         by_status[row["status"]] = by_status.get(row["status"], 0) + 1
@@ -417,7 +435,11 @@ def console_summary(rows: list[dict], *, dry_run: bool = False) -> None:
         print(f"  {status}: {by_status[status]}")
     for row in rows:
         if row["status"] == "dead":
-            label = f"{row['developer_slug']}/{row['site_slug']}" if row["site_slug"] else row["developer_slug"]
+            label = (
+                f"{row['developer_slug']}/{row['site_slug']}"
+                if row["site_slug"]
+                else row["developer_slug"]
+            )
             print(f"  DEAD: {label} — {row['url']}")
     screenshots = sum(1 for row in rows if "screenshot" in row["changes"])
     if screenshots:
@@ -435,7 +457,9 @@ DAYS_PER_MONTH = 30.44
 
 
 def add_common_options(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--content-dir", type=Path, default=Path("src/content/developers"))
+    parser.add_argument(
+        "--content-dir", type=Path, default=Path("src/content/developers")
+    )
     parser.add_argument(
         "--max-age-months",
         type=float,
@@ -447,7 +471,9 @@ def add_common_options(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--out-dir", type=Path, default=None)
     parser.add_argument(
-        "--delay", type=float, default=DEFAULT_DELAY_S,
+        "--delay",
+        type=float,
+        default=DEFAULT_DELAY_S,
         help="Seconds to wait between scans (politeness)",
     )
 
@@ -525,7 +551,10 @@ def main() -> int:
     sites_parser = sub.add_parser("sites", help="Re-scan site entries")
     add_common_options(sites_parser)
     sites_parser.add_argument(
-        "--site", action="append", default=[], metavar="DEV/SITE",
+        "--site",
+        action="append",
+        default=[],
+        metavar="DEV/SITE",
         help="Narrow to these site slugs",
     )
     profiles_parser = sub.add_parser("profiles", help="Re-scan developer profiles")

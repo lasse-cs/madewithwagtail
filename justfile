@@ -34,12 +34,12 @@ serve:
 
 # Run the submission pipeline tests.
 test-submissions:
-    uv run --with pytest --with pydantic --with pyyaml --with python-slugify --with httpx --with pillow pytest tests/submissions
+    uv run --with 'pytest, pydantic, pyyaml, python-slugify, httpx, pillow' pytest tests/submissions
 
 # Refresh site listings (screenshots, technologies, canonical URLs).
-refresh-sites:
-    uv run scripts/submissions/refresh_sites.py sites
+refresh-sites *args:
+    ./scripts/submissions/refresh_sites.py sites {{args}}
 
 # Refresh developer profiles (logos, online profile links).
-refresh-profiles:
-    uv run scripts/submissions/refresh_sites.py profiles
+refresh-profiles *args:
+    ./scripts/submissions/refresh_sites.py profiles {{args}}

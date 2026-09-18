@@ -346,6 +346,21 @@ class TestExtractProfileLinks:
     def test_empty_html(self):
         assert extract_profile_links("", "https://frojd.example/") == []
 
+    def test_malformed_hrefs_do_not_crash(self):
+        # Real-world pages carry hrefs like "\nhttps://twitter.com/foo";
+        # httpx.URL.join raises InvalidURL on control characters, which
+        # must not abort the whole profile scan. Stripping salvages the URL;
+        # anything still invalid is skipped.
+        html = (
+            '<a href="\nhttps://twitter.com/frojd">salvaged</a>'
+            '<a href=" https://x.com/frojdagency ">padded</a>'
+            '<a href="\x00https://github.com/frojd">invalid</a>'
+        )
+        assert extract_profile_links(html, "https://frojd.example/") == [
+            "https://twitter.com/frojd",
+            "https://x.com/frojdagency",
+        ]
+
 
 class TestLinkMatchesDeveloper:
     def test_github_user_match(self):
