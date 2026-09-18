@@ -15,9 +15,12 @@ export interface Props {
   description?: string;
   ogImage?: OgImage;
   noindex?: boolean;
+  // Canonical URL path for pages that duplicate another URL (e.g. /page/1/
+  // duplicating the listing root). Defaults to the current path.
+  canonical?: string;
 }
 
-const { title, description, ogImage, noindex } = Astro.props;
+const { title, description, ogImage, noindex, canonical } = Astro.props;
 const pageTitle = title ? `${title} | Made with Wagtail` : 'Made with Wagtail';
 const pageDescription =
   description ?? 'A showcase of sites made with Wagtail, the popular Django CMS.';
@@ -30,7 +33,7 @@ const toAbsoluteUrl = (path: string): string => {
 };
 
 const ogImageUrl = ogImage ? toAbsoluteUrl(ogImage.src) : undefined;
-const canonicalUrl = toAbsoluteUrl(Astro.url.pathname);
+const canonicalUrl = toAbsoluteUrl(canonical ?? Astro.url.pathname);
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 

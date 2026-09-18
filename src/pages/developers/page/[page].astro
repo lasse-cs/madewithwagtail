@@ -37,6 +37,10 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 const { page } = Astro.props;
 
+// Page 1 duplicates the developer index: same cards, self-canonical to
+// '/developers/'.
+const isFirstPage = page.currentPage === 1;
+
 interface PaginatedDeveloper {
   id: string;
   data: {
@@ -47,7 +51,10 @@ interface PaginatedDeveloper {
 }
 ---
 
-<BaseLayout title={`Developers - Page ${page.currentPage}`}>
+<BaseLayout
+  title={isFirstPage ? 'Developers' : `Developers - Page ${page.currentPage}`}
+  canonical={isFirstPage ? '/developers/' : undefined}
+>
   <div class="content-width">
     <div class="banner">
       <h1>Developers</h1>

@@ -46,9 +46,18 @@ const developerMap = new Map(
     (page.data.length > 0 ? Astro.props.developers : {}) as Record<string, DeveloperEntry>,
   ),
 );
+
+// Page 1 duplicates the homepage: same cards, self-canonical to '/'.
+const isFirstPage = page.currentPage === 1;
+const firstSite = page.start + 1;
+const lastSite = page.end + 1;
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={isFirstPage ? undefined : `Page ${page.currentPage}`}
+  description={`A showcase of sites and applications made with Wagtail CMS — sites ${firstSite}–${lastSite} of ${page.total}.`}
+  canonical={isFirstPage ? '/' : undefined}
+>
   <div class="content-width">
     <div class="banner">
       <h1>Made with Wagtail</h1>

@@ -14,6 +14,11 @@ export default defineConfig({
       // <lastmod> for site and developer profile pages, from the
       // latest_revision_created_at dates shown on those pages.
       serialize(item) {
+        // /page/1/ and /developers/page/1/ duplicate their listing roots,
+        // which they self-canonical to — keep them out of the sitemap.
+        if (/\/(developers\/)?page\/1\/$/.test(new URL(item.url).pathname)) {
+          return undefined;
+        }
         const lastmod = getLastmodForUrl(item.url);
         if (lastmod) {
           item.lastmod = lastmod;
