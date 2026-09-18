@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, passthroughImageService } from 'astro/config';
 import { getLastmodForUrl } from './src/lastmod.mjs';
+import { llmsTxt } from './src/llms.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
         return item;
       },
     }),
+    llmsTxt(),
   ],
   redirects: {
     // Neat URL to share for new site submissions.
