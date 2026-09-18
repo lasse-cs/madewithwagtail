@@ -74,4 +74,12 @@ const sites = defineCollection({
   }),
 });
 
-export const collections = { developers, sites };
+const facets = defineCollection({
+  // Hand-written intro copy for facet pages (/sites/<facet>/<value>/), one
+  // file per facet value that has one: <facet>/<value-slug>.md, e.g.
+  // 'sector/government.md'. Rendered above the site grid on the facet page.
+  loader: glob({ base: './src/content/facets', pattern: '*/*.md' }),
+  schema: z.object({}),
+});
+
+export const collections = { developers, sites, facets };

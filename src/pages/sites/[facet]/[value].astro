@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import SiteCard from '../../../components/SiteCard.astro';
@@ -35,6 +35,13 @@ const { display, facetLabel: label } = Astro.props;
 const allSites = await getCollection('sites');
 const allDevelopers = await getCollection('developers');
 const devMap = new Map(allDevelopers.map((d) => [d.id, d]));
+
+// Hand-written intro copy for this facet, when there is one
+// (src/content/facets/<facet>/<value>.md).
+const introEntry = (await getCollection('facets')).find(
+  (entry) => entry.id === `${facet}/${value}`,
+);
+const Intro = introEntry ? (await render(introEntry)).Content : null;
 
 const filteredSites = allSites
   .filter((site) =>
@@ -91,6 +98,12 @@ function getCooperator(cooperatorSlug: string) {
         </p>
       </div>
     </div>
+
+    {Intro && (
+      <div class="text nice-line-length vertical-top">
+        <Intro />
+      </div>
+    )}
 
     <div class="grid grid-stack site-listing">
       {filteredSites.map((site, index) => {
