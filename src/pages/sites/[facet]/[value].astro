@@ -1,63 +1,94 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import SiteCard from '../../../components/SiteCard.astro';
-import { facetSlug, withBase } from '../../../helpers.ts';
+import { FACETS, type FacetKey, facetLabel, facetValues } from '../../../facets.ts';
+import { absoluteUrl, facetSlug, withBase } from '../../../helpers.ts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { breadcrumbListNode, collectionPageNode } from '../../../schema.ts';
 
 export const getStaticPaths = (async () => {
-  const FACETS = { sector: 'sector', type: 'site_type', capability: 'capability' } as const;
   const allSites = await getCollection('sites');
   const paths: {
     params: { facet: string; value: string };
-    props: { display: string; facetLabel: string };
+    props: { display: string; facetLabel: string; count: number };
   }[] = [];
-  for (const [facet, field] of Object.entries(FACETS) as [string, string][]) {
-    const facetLabel =
-      facet === 'type' ? 'Site type' : facet === 'capability' ? 'Capability' : 'Sector';
-    // slug -> display, first spelling wins
-    const values = new Map<string, string>();
-    for (const site of allSites) {
-      for (const value of site.data[field as 'sector' | 'site_type' | 'capability'] as string[]) {
-        const slug = facetSlug(value);
-        if (!values.has(slug)) values.set(slug, value);
-      }
-    }
-    for (const [value, display] of values) {
-      paths.push({ params: { facet, value }, props: { display, facetLabel } });
+  for (const facet of Object.keys(FACETS) as FacetKey[]) {
+    for (const facetValue of facetValues(facet, allSites)) {
+      paths.push({
+        params: { facet, value: facetValue.slug },
+        props: {
+          display: facetValue.display,
+          facetLabel: facetLabel(facet),
+          count: facetValue.count,
+        },
+      });
     }
   }
   return paths;
 }) satisfies GetStaticPaths;
 
 const { facet, value } = Astro.params;
-const { display, facetLabel } = Astro.props;
-
-const FACETS = { sector: 'sector', type: 'site_type', capability: 'capability' } as const;
-const field = FACETS[facet as keyof typeof FACETS] as 'sector' | 'site_type' | 'capability';
+const { display, facetLabel: label } = Astro.props;
 
 const allSites = await getCollection('sites');
 const allDevelopers = await getCollection('developers');
 const devMap = new Map(allDevelopers.map((d) => [d.id, d]));
 
 const filteredSites = allSites
-  .filter((site) => (site.data[field] as string[]).some((v) => facetSlug(v) === value))
+  .filter((site) =>
+    (site.data[FACETS[facet as FacetKey]] as string[]).some((v) => facetSlug(v) === value),
+  )
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 const displayValue = display.charAt(0).toUpperCase() + display.slice(1);
+
+// Meta description: counts computed from the content collections.
+const developerCount = new Set(filteredSites.map((site) => site.id.split('/')[0])).size;
+const description =
+  facet === 'type'
+    ? `${filteredSites.length} Wagtail ${display.toLowerCase()} sites, built by ${developerCount} developers and agencies — browse the showcase on Made with Wagtail.`
+    : facet === 'capability'
+      ? `${filteredSites.length} Wagtail sites featuring ${display.toLowerCase()}, built by ${developerCount} developers and agencies — browse the showcase on Made with Wagtail.`
+      : `${filteredSites.length} Wagtail sites in the ${displayValue} ${label.toLowerCase()}, built by ${developerCount} developers and agencies — browse the showcase on Made with Wagtail.`;
+
+// Structured data: the filtered listing plus its breadcrumb trail
+// (Home > Sites > <Value>).
+const facetPath = `/sites/${facet}/${value}/`;
+const jsonLd = [
+  collectionPageNode({
+    path: facetPath,
+    name: `${displayValue} sites`,
+    items: filteredSites.map((site) => ({
+      name: site.data.title,
+      url: absoluteUrl(`/developers/${site.id}/`),
+    })),
+  }),
+  breadcrumbListNode([
+    { name: 'Sites', url: absoluteUrl('/sites/') },
+    { name: `${displayValue} sites`, url: absoluteUrl(facetPath) },
+  ]),
+];
 
 function getCooperator(cooperatorSlug: string) {
   return devMap.get(cooperatorSlug);
 }
 ---
 
-<BaseLayout title={`${displayValue} sites`}>
+<BaseLayout title={`${displayValue} sites`} description={description} jsonLd={jsonLd}>
   <div class="site-content content-width">
+    <Breadcrumbs ancestors={[{ title: 'Sites', url: withBase('/sites/') }]} />
+
     <div class="banner">
       <h1>{displayValue} sites</h1>
       <div class="intro">
-        <p>{facetLabel}: &ldquo;{display}&rdquo;</p>
-        <a href={withBase('/')}>Show all sites</a>
+        <p>{label}: &ldquo;{display}&rdquo;</p>
+        <p>
+          <a href={withBase('/sites/')}>All sectors, types, and capabilities</a>
+          &middot;{' '}
+          <a href={withBase('/')}>Show all sites</a>
+        </p>
       </div>
     </div>
 

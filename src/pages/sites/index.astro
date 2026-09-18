@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import TagPills from '../../components/TagPills.astro';
+import { FACETS, type FacetKey, facetLabel, facetValues } from '../../facets.ts';
+import { withBase } from '../../helpers.ts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allSites = await getCollection('sites');
+
+const facetSections = (Object.keys(FACETS) as FacetKey[]).map((facet) => ({
+  facet,
+  label: facetLabel(facet),
+  values: facetValues(facet, allSites),
+}));
+const totalFacets = facetSections.reduce((sum, section) => sum + section.values.length, 0);
+---
+
+<BaseLayout
+  title="Browse sites"
+  description={`Browse ${allSites.length} Wagtail sites by sector, site type, or capability across ${totalFacets} collections.`}
+>
+  <div class="site-content content-width">
+    <div class="banner">
+      <h1>Browse sites</h1>
+      <div class="intro">
+        <p>
+          Browse the {allSites.length} sites in the showcase by sector, site type, or capability —
+          {' '}{totalFacets}
+          collections in total.
+        </p>
+        <a href={withBase('/')}>Show all sites</a>
+      </div>
+    </div>
+
+    {facetSections.map((section) => (
+      <div class="vertical-top">
+        <h2>{section.label}</h2>
+        <TagPills
+          facet={section.facet}
+          values={section.values.map((value) => ({
+            name: value.display,
+            slug: value.slug,
+            count: value.count,
+          }))}
+        />
+      </div>
+    ))}
+  </div>
+</BaseLayout>
