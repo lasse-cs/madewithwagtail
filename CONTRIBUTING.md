@@ -2,25 +2,31 @@
 
 Thank you for your interest in this project! Made with Wagtail is a showcase of sites built with [Wagtail](https://wagtail.org), generated as a fully static site with [Astro](https://astro.build) from Markdown content collections.
 
-## Installation
+## Quick start
 
-First, clone the repo:
+Requirements: Node, `npm`, [`just`](https://github.com/casey/just), and [`prek`](https://prek.j178.dev/).
 
 ```sh
 git clone git+https://github.com/wagtail/madewithwagtail
 cd madewithwagtail
-```
 
-> Requirements: [`node`](https://nodejs.org) (see [.node-version](./.node-version)), `npm`, [`just`](https://github.com/casey/just), and [`prek`](https://prek.j178.dev/).
-
-Then you can install the dependencies and run the site locally:
-
-```sh
+# Install the dependencies.
 just install
+
+# Start the development server at http://localhost:4321/madewithwagtail/.
 just serve
 ```
 
-The site is served at `http://localhost:4321/madewithwagtail/`.
+Other useful commands:
+
+```sh
+just build            # Build the production site to `dist/`.
+just check            # Run the Astro type checker.
+just lint             # Run all linters (Biome, Stylelint, prek).
+just format           # Run all formatters.
+just test-submissions # Run the submission pipeline tests.
+just help             # List all the justfile recipes.
+```
 
 ## How the site works
 
