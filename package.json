@@ -21,7 +21,7 @@
     "lint:css": "stylelint --report-needless-disables --report-unscoped-disables 'src/**/*.{css,scss}'",
     "format": "npm run format:code && npm run format:css",
     "format:code": "biome check --write .",
-    "format:css": "prettier --write 'src/**/*.{css,scss}'"
+    "format:css": "prettier --write 'src/**/*.{md,css,scss}'"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.0",

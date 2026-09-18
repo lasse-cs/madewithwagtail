@@ -2,7 +2,7 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
@@ -14,11 +14,8 @@ indent_style = tab
 [*.py]
 max_line_length = 88
 
-[*.{html,rst,md}]
+[*.{py,html}]
 indent_size = 4
-
-[*.{mjs,js,ts,tsx,json,jsonc,yml,yaml,toml,css,scss}]
-indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false

@@ -9,8 +9,6 @@ coverage/
 /coverage_html_report
 legacy/
 _build
-# File types which Prettier supports but we don’t want auto-formatting.
-*.md
 # Files which contain incompatible syntax.
 *.html
 # Formatted with Biome
