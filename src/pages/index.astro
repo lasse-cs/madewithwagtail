@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Pagination from '../components/Pagination.astro';
 import SiteCard from '../components/SiteCard.astro';
 import TagPills from '../components/TagPills.astro';
+import { FACETS, type FacetKey, facetValues } from '../facets.ts';
 import { absoluteUrl, facetSlug, withBase } from '../helpers.ts';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { collectionPageNode } from '../schema.ts';
@@ -33,6 +34,13 @@ const sectors = Array.from(sectorCounts.entries())
   .map(([name, count]) => ({ name, slug: facetSlug(name), count }))
   .sort((a, b) => b.count - a.count);
 
+// Counts for the scope statement, computed from the collections so they
+// never go stale.
+const facetCount = (Object.keys(FACETS) as FacetKey[]).reduce(
+  (sum, facet) => sum + facetValues(facet, allSites).length,
+  0,
+);
+
 function getCooperator(cooperatorSlug: string) {
   return developerMap.get(cooperatorSlug);
 }
@@ -55,9 +63,15 @@ const jsonLd = [
     <h1>A showcase of sites and apps made with Wagtail CMS</h1>
     <div class="intro">
       <p>
-        <a href="https://wagtail.org/">Wagtail</a>{' '}
-        is an easy to use, open source Django content management system, made by{' '}
-        <a href="https://torchbox.com/">Torchbox</a>
+        Made with Wagtail is a showcase of {allSites.length} production websites and apps built with
+        <a href="https://wagtail.org/">Wagtail</a>, the open source Django content management
+        system, submitted by {allDevelopers.length} developers and agencies across{' '}
+        {facetCount}
+        collections.
+      </p>
+      <p>
+        Maintained by the Wagtail project. To see your site here,{' '}
+        <a href={withBase('/submit-your-site/')}>submit it for review</a>.
       </p>
     </div>
   </div>
