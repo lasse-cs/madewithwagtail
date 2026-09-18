@@ -1,4 +1,10 @@
-import process_submission as ps
+from pipeline.proposal import Proposal
+from pipeline.publish import (
+    build_failure_comment,
+    build_pr_body,
+    build_pr_comment,
+    build_rejection_comment,
+)
 from test_proposal import make_proposal_kwargs
 
 DETECTION = {
@@ -11,7 +17,7 @@ DETECTION = {
 
 
 def make_proposal(**overrides):
-    return ps.Proposal(**make_proposal_kwargs(**overrides))
+    return Proposal(**make_proposal_kwargs(**overrides))
 
 
 class TestPrBody:
@@ -19,7 +25,7 @@ class TestPrBody:
         # The body opens with the close-reference + workflow link; no
         # heading duplicating the PR title. The run link lives inline —
         # the old bottom footer is gone.
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(),
             DETECTION,
             "wagtail/madewithwagtail",
@@ -37,7 +43,7 @@ class TestPrBody:
         assert body.count("Closes #42") == 1
 
     def test_metadata_table_shape(self):
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(
                 developer_exists=True,
                 developer_slug="torchbox",
@@ -76,7 +82,7 @@ class TestPrBody:
     def test_similar_profiles_row_when_hinted(self):
         # Near-miss developer names create a new profile; similar existing
         # profiles are surfaced for reviewers to catch duplicates.
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(similar_developers=["frojd", "fr-ojd"]),
             DETECTION,
             "r/r",
@@ -92,7 +98,7 @@ class TestPrBody:
         assert body.index("| Developer |") < body.index("| Similar profiles |")
 
     def test_similar_profiles_row_omitted_by_default(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "Similar profiles" not in body
 
     def test_developer_website_link_fallbacks(self):
@@ -103,7 +109,7 @@ class TestPrBody:
             developer_slug="torchbox",
             developer_name="Torchbox",
         )
-        body = ps.build_pr_body(existing, DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(existing, DETECTION, "r/r", "b", "https://run")
         assert (
             "[Torchbox](https://madewithwagtail.org/developers/torchbox/)"
             " - [see profile page](https://madewithwagtail.org/developers/torchbox/)"
@@ -111,12 +117,12 @@ class TestPrBody:
         )
         # New developer without a developer_url: plain name, no dead links.
         new = make_proposal()  # new-developer, no developer_url
-        body = ps.build_pr_body(new, DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(new, DETECTION, "r/r", "b", "https://run")
         assert "| Developer | Example Co - new 🎉 |" in body
 
     def test_submitter_notes_section_when_provided(self):
         p = make_proposal(other_notes="Launched in 2024, redesign of an older site.")
-        body = ps.build_pr_body(p, DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(p, DETECTION, "r/r", "b", "https://run")
         assert "### Submitter notes" in body
         assert "Launched in 2024, redesign of an older site." in body
         # Notes sit before the detected-technologies section and checklist.
@@ -126,12 +132,12 @@ class TestPrBody:
         assert body.index("### Submitter notes") < body.index("### Reviewer checklist")
 
     def test_submitter_notes_omitted_when_none(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "### Submitter notes" not in body
 
     def test_screenshot_is_table_thumbnail(self):
         p = make_proposal()
-        body = ps.build_pr_body(
+        body = build_pr_body(
             p,
             DETECTION,
             "wagtail/madewithwagtail",
@@ -147,11 +153,11 @@ class TestPrBody:
         assert "### Screenshot" not in body
 
     def test_detection_in_table(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Detection | ✅ generator meta tag |" in body
         assert "### Wagtail detection" not in body
         detection = {**DETECTION, "is_wagtail": False, "signals": []}
-        body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
         assert "| Detection | ⚠️ No Wagtail signals detected |" in body
 
     def test_multiple_signals_joined(self):
@@ -159,20 +165,20 @@ class TestPrBody:
             **DETECTION,
             "signals": ["generator meta tag", "Wagtail rendition URL in image sources"],
         }
-        body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
         assert (
             "| Detection | ✅ generator meta tag; Wagtail rendition URL in image sources |"
             in body
         )
 
     def test_local_preview_in_table(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Local preview | `/developers/example-co/example-site` |" in body
         assert "### How to review" not in body
 
     def test_site_page_raw_url_at_head_sha(self):
         sha = "a" * 40
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(),
             DETECTION,
             "wagtail/madewithwagtail",
@@ -193,7 +199,7 @@ class TestPrBody:
 
     def test_developer_profile_page_section_new_developer(self):
         sha = "b" * 40
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(),
             DETECTION,
             "wagtail/madewithwagtail",
@@ -213,7 +219,7 @@ class TestPrBody:
         # An existing-profile submission with provided details updates the
         # profile in the same PR, deep-linked under its own heading.
         sha = "d" * 40
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(
                 developer_exists=True,
                 developer_slug="torchbox",
@@ -236,7 +242,7 @@ class TestPrBody:
 
     def test_no_profile_page_section_existing_developer(self):
         sha = "c" * 40
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(
                 developer_exists=True,
                 developer_slug="torchbox",
@@ -253,13 +259,13 @@ class TestPrBody:
         assert "### Developer profile page" not in body
 
     def test_site_page_dry_run_without_sha(self):
-        body = ps.build_pr_body(
+        body = build_pr_body(
             make_proposal(), DETECTION, "r/r", "submission/issue-42", "https://run"
         )
         assert "SHA unavailable" in body
 
     def test_reviewer_checklist_no_footer(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "- [ ]" in body
         # The run link moved into the intro line; the standalone footer
         # must not come back.
@@ -267,10 +273,10 @@ class TestPrBody:
 
     def test_logo_row_gated_on_logo_committed(self):
         p = make_proposal()  # new-developer: output_paths includes the logo
-        with_logo = ps.build_pr_body(
+        with_logo = build_pr_body(
             p, DETECTION, "r/r", "b", "https://run", logo_committed=True
         )
-        without_logo = ps.build_pr_body(
+        without_logo = build_pr_body(
             p, DETECTION, "r/r", "b", "https://run", logo_committed=False
         )
         assert "| Logo | <img" in with_logo
@@ -279,7 +285,7 @@ class TestPrBody:
     def test_logo_row_default_keeps_backward_compatible_behavior(self):
         # None derives from output_paths: a new-developer proposal still
         # advertises the logo unless the caller says otherwise.
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Logo | <img" in body
 
     def test_detected_technologies_section_all_kinds(self):
@@ -291,7 +297,7 @@ class TestPrBody:
                 "other": ["jQuery"],
             },
         }
-        body = ps.build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), detection, "r/r", "b", "https://run")
         assert "### Detected technologies" in body
         assert "- ✅ Complementary: React, Tailwind CSS" in body
         assert "- Other: jQuery" in body
@@ -304,18 +310,18 @@ class TestPrBody:
         )
 
     def test_detected_technologies_section_empty(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "### Detected technologies" in body
         assert "None detected" in body
 
     def test_detected_technologies_omitted_from_metadata_table(self):
-        body = ps.build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
+        body = build_pr_body(make_proposal(), DETECTION, "r/r", "b", "https://run")
         assert "| Detected technologies" not in body
 
 
 class TestComments:
     def test_pr_comment_links(self):
-        text = ps.build_pr_comment(
+        text = build_pr_comment(
             make_proposal(), "https://github.com/r/r/pull/1", "https://run"
         )
         assert "https://github.com/r/r/pull/1" in text
@@ -323,7 +329,7 @@ class TestComments:
         assert "auto-closes" in text
 
     def test_rejection_comment_lists_reasons(self):
-        text = ps.build_rejection_comment(
+        text = build_rejection_comment(
             ["Fill in the site title.", "Tick the confirmation."], "https://run"
         )
         assert "Fill in the site title." in text
@@ -334,7 +340,7 @@ class TestComments:
         assert "open a new submission" not in text
 
     def test_failure_comment_names_stage(self):
-        text = ps.build_failure_comment("render", "screenshot timeout", "https://run")
+        text = build_failure_comment("render", "screenshot timeout", "https://run")
         assert "render" in text
         assert "screenshot timeout" in text
         assert "needs-triage" in text

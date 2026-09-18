@@ -5,12 +5,19 @@ from datetime import datetime, timezone
 import pytest
 from PIL import Image
 
-import process_submission as ps
+from pipeline.proposal import Proposal
+from pipeline.content import (
+    output_paths,
+    update_developer_profile,
+    write_content_files,
+)
+from pipeline.publish import commit_message, git_add_paths
+from process_submission import cmd_publish
 from test_proposal import make_proposal_kwargs
 
 
 def make_proposal(**overrides):
-    return ps.Proposal(**make_proposal_kwargs(**overrides))
+    return Proposal(**make_proposal_kwargs(**overrides))
 
 
 def make_webp(size: tuple[int, int] = (1200, 996)) -> bytes:
@@ -23,7 +30,7 @@ class TestWriteContentFiles:
     def test_writes_site_and_images(self, tmp_path):
         (tmp_path / "src" / "content" / "developers").mkdir(parents=True)
         p = make_proposal()
-        written = ps.write_content_files(p, tmp_path, make_webp(), make_webp((200, 100)))
+        written = write_content_files(p, tmp_path, make_webp(), make_webp((200, 100)))
         rel = {str(path.relative_to(tmp_path)) for path in written}
         assert "src/content/developers/example-co/example-site/index.md" in rel
         assert "src/content/developers/example-co/index.md" in rel
@@ -35,7 +42,7 @@ class TestWriteContentFiles:
     def test_existing_developer_writes_less(self, tmp_path):
         (tmp_path / "src" / "content" / "developers").mkdir(parents=True)
         p = make_proposal(developer_exists=True, developer_slug="frojd")
-        written = ps.write_content_files(p, tmp_path, make_webp(), None)
+        written = write_content_files(p, tmp_path, make_webp(), None)
         rel = {path.name for path in written}
         assert rel == {"index.md", "example-site.fill-1200x996.webp"}
 
@@ -43,7 +50,7 @@ class TestWriteContentFiles:
         (tmp_path / "src").mkdir()
         (tmp_path / "public").mkdir()
         with pytest.raises(ValueError, match="1200x996"):
-            ps.write_content_files(make_proposal(), tmp_path, make_webp((800, 600)), None)
+            write_content_files(make_proposal(), tmp_path, make_webp((800, 600)), None)
 
     def test_rejects_non_webp(self, tmp_path):
         (tmp_path / "src").mkdir()
@@ -51,7 +58,7 @@ class TestWriteContentFiles:
         buf = io.BytesIO()
         Image.new("RGB", (1200, 996)).save(buf, "PNG")
         with pytest.raises(ValueError, match="WEBP"):
-            ps.write_content_files(make_proposal(), tmp_path, buf.getvalue(), None)
+            write_content_files(make_proposal(), tmp_path, buf.getvalue(), None)
 
 
 class TestGitAddPaths:
@@ -67,7 +74,7 @@ class TestGitAddPaths:
             / "src" / "content" / "developers" / "example-co" / "example-site"
             / "example-site.fill-1200x996.webp"
         ).touch()
-        paths = ps.git_add_paths(p, tmp_path)
+        paths = git_add_paths(p, tmp_path)
         assert (
             tmp_path / "src/content/developers/example-co/example-co.max-120x120.webp" not in paths
         )
@@ -75,18 +82,18 @@ class TestGitAddPaths:
 
     def test_includes_logo_when_written(self, tmp_path):
         p = make_proposal()
-        for rel in ps.output_paths(p).values():
+        for rel in output_paths(p).values():
             (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
             (tmp_path / rel).touch()
-        paths = ps.git_add_paths(p, tmp_path)
+        paths = git_add_paths(p, tmp_path)
         assert len(paths) == 4
 
     def test_existing_developer_paths_only(self, tmp_path):
         p = make_proposal(developer_exists=True, developer_slug="frojd")
-        for rel in ps.output_paths(p).values():
+        for rel in output_paths(p).values():
             (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
             (tmp_path / rel).touch()
-        paths = ps.git_add_paths(p, tmp_path)
+        paths = git_add_paths(p, tmp_path)
         assert {path.name for path in paths} == {"index.md", "example-site.fill-1200x996.webp"}
 
 
@@ -123,7 +130,7 @@ class TestProfileUpdate:
     def test_updates_provided_fields_and_preserves_the_rest(self, tmp_path):
         profile = self.make_profile(tmp_path)
         p = self.proposal(developer_location="Gothenburg, Sweden", lat="57.7087")
-        written = ps.write_content_files(p, tmp_path, make_webp(), None)
+        written = write_content_files(p, tmp_path, make_webp(), None)
         assert profile in written
         text = profile.read_text(encoding="utf-8")
         assert "location: Gothenburg, Sweden" in text
@@ -137,7 +144,7 @@ class TestProfileUpdate:
     def test_revision_timestamp_bumped(self, tmp_path):
         profile = self.make_profile(tmp_path)
         p = self.proposal(developer_location="Gothenburg, Sweden")
-        ps.write_content_files(p, tmp_path, make_webp(), None)
+        write_content_files(p, tmp_path, make_webp(), None)
         text = profile.read_text(encoding="utf-8")
         assert "latest_revision_created_at: '2026-08-05T00:00:00+00:00'" in text
         assert "2017-03-14T05:42:09" in text  # first_published_at untouched
@@ -146,7 +153,7 @@ class TestProfileUpdate:
         # A Developer name alone must still work without touching the profile.
         profile = self.make_profile(tmp_path)
         before = profile.read_text(encoding="utf-8")
-        written = ps.write_content_files(self.proposal(), tmp_path, make_webp(), None)
+        written = write_content_files(self.proposal(), tmp_path, make_webp(), None)
         assert profile not in written
         assert profile.read_text(encoding="utf-8") == before
 
@@ -154,26 +161,26 @@ class TestProfileUpdate:
         profile = self.make_profile(tmp_path)
         before = profile.read_text(encoding="utf-8")
         p = self.proposal(developer_location="Stockholm, Sweden", github_user="frojd")
-        written = ps.write_content_files(p, tmp_path, make_webp(), None)
+        written = write_content_files(p, tmp_path, make_webp(), None)
         assert profile not in written
         assert profile.read_text(encoding="utf-8") == before
 
     def test_output_paths_include_profile_only_when_updating(self):
-        assert "developer_md" not in ps.output_paths(self.proposal())
-        assert "developer_md" in ps.output_paths(
+        assert "developer_md" not in output_paths(self.proposal())
+        assert "developer_md" in output_paths(
             self.proposal(developer_location="Gothenburg, Sweden")
         )
 
     def test_missing_profile_is_skipped(self, tmp_path):
         p = self.proposal(developer_location="Gothenburg, Sweden")
         assert (
-            ps.update_developer_profile(tmp_path / "nope" / "index.md", p) is False
+            update_developer_profile(tmp_path / "nope" / "index.md", p) is False
         )
 
 
 class TestCommitMessage:
     def test_credits_issue_author(self):
-        message = ps.commit_message(make_proposal(), "thibaudcolas", "1234567")
+        message = commit_message(make_proposal(), "thibaudcolas", "1234567")
         assert message.startswith("Add site submission from issue #42")
         assert (
             "Co-authored-by: thibaudcolas <1234567+thibaudcolas@users.noreply.github.com>"
@@ -181,17 +188,17 @@ class TestCommitMessage:
         )
 
     def test_trailer_set_off_by_blank_line(self):
-        message = ps.commit_message(make_proposal(), "thibaudcolas", "1234567")
+        message = commit_message(make_proposal(), "thibaudcolas", "1234567")
         assert message.endswith(
             "\n\nCo-authored-by: thibaudcolas <1234567+thibaudcolas@users.noreply.github.com>"
         )
 
     def test_no_co_author_omits_trailer(self):
-        message = ps.commit_message(make_proposal(), None, None)
+        message = commit_message(make_proposal(), None, None)
         assert "Co-authored-by" not in message
 
     def test_missing_id_omits_trailer(self):
-        message = ps.commit_message(make_proposal(), "thibaudcolas", None)
+        message = commit_message(make_proposal(), "thibaudcolas", None)
         assert "Co-authored-by" not in message
 
 
@@ -207,7 +214,7 @@ class TestCmdPublishPrepare:
         screenshot_file = tmp_path / "screenshot.webp"
         screenshot_file.write_bytes(make_webp())
 
-        code = ps.cmd_publish(
+        code = cmd_publish(
             [
                 "prepare",
                 "--proposal", str(proposal_file),

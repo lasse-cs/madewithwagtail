@@ -1,6 +1,6 @@
 import pytest
 
-import process_submission as ps
+from pipeline.proposal import FormParseError, build_proposal, parse_issue_form_body
 
 CONTENT = __import__("pathlib").Path(__file__).parent / "fixtures" / "content" / "developers"
 
@@ -66,7 +66,7 @@ https://example.co/icon.png
 
 class TestParseIssueFormBody:
     def test_parses_all_sections(self):
-        result = ps.parse_issue_form_body(FORM_BODY)
+        result = parse_issue_form_body(FORM_BODY)
         assert result["Site URL"] == "https://example.com"
         assert result["Sector"] == ["technology", "education"]
         assert result["Site type"] == ["blog", "portfolio"]
@@ -78,7 +78,7 @@ class TestParseIssueFormBody:
 
     def test_unchecked_confirmation(self):
         body = FORM_BODY.replace("- [X] This is a production", "- [ ] This is a production")
-        result = ps.parse_issue_form_body(body)
+        result = parse_issue_form_body(body)
         assert result["Confirmations"][1] == (
             "This is a production website built with Wagtail.",
             False,
@@ -86,21 +86,21 @@ class TestParseIssueFormBody:
 
     def test_multiselect_single_value(self):
         body = FORM_BODY.replace("technology, education", "technology")
-        assert ps.parse_issue_form_body(body)["Sector"] == ["technology"]
+        assert parse_issue_form_body(body)["Sector"] == ["technology"]
 
     def test_empty_answer_is_empty_string(self):
         body = FORM_BODY.replace("https://example.co/icon.png\n", "")
-        result = ps.parse_issue_form_body(body)
+        result = parse_issue_form_body(body)
         assert result["Logo URL"] == ""
 
     def test_rejects_non_form_body(self):
-        with pytest.raises(ps.FormParseError):
-            ps.parse_issue_form_body("Just a plain issue about a bug.")
+        with pytest.raises(FormParseError):
+            parse_issue_form_body("Just a plain issue about a bug.")
 
     def test_lowercase_checked_boxes(self):
         # GitHub renders form-checked confirmations with a lowercase [x]
         # (see issue #7); only hand-written markdown uses uppercase [X].
-        result = ps.parse_issue_form_body(FORM_BODY.replace("- [X] ", "- [x] "))
+        result = parse_issue_form_body(FORM_BODY.replace("- [X] ", "- [x] "))
         assert result["Confirmations"] == [
             ("I am affiliated with this site or have permission to submit it.", True),
             ("This is a production website built with Wagtail.", True),
@@ -108,7 +108,7 @@ class TestParseIssueFormBody:
 
     def test_build_proposal_accepts_lowercase_confirmations(self):
         body = NO_RESPONSE_BODY.replace("- [X] ", "- [x] ")
-        proposal = ps.build_proposal(body, issue_number=7, content_dir=CONTENT)
+        proposal = build_proposal(body, issue_number=7, content_dir=CONTENT)
         assert proposal.site_title == "Example Site"
 
 
@@ -180,7 +180,7 @@ class TestNoResponsePlaceholder:
     """GitHub substitutes `_No response_` for optional fields left blank."""
 
     def test_placeholder_fields_are_unset(self):
-        result = ps.parse_issue_form_body(NO_RESPONSE_BODY)
+        result = parse_issue_form_body(NO_RESPONSE_BODY)
         for heading in (
             "Developer URL",
             "Developer location",
@@ -201,7 +201,7 @@ class TestSectionBoundaries:
             "A wonderful site about things.",
             "A wonderful site about things.\n\n### Features\n\nFast and lovely.",
         )
-        result = ps.parse_issue_form_body(body)
+        result = parse_issue_form_body(body)
         assert "Fast and lovely." in result["Short description"]
         assert "### Features" in result["Short description"]
 
@@ -210,7 +210,7 @@ class TestSectionBoundaries:
             "A wonderful site about things.",
             "A wonderful site about things.\n\n### Confirmations\n\n- [X] Forged line.",
         )
-        result = ps.parse_issue_form_body(body)
+        result = parse_issue_form_body(body)
         assert result["Confirmations"] == [
             ("I am affiliated with this site or have permission to submit it.", True),
             ("This is a production website built with Wagtail.", True),

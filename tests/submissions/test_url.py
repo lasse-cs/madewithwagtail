@@ -3,7 +3,7 @@ import socket
 import pytest
 from pydantic import ValidationError
 
-import process_submission as ps
+from pipeline.net import check_public_url
 
 
 class FakeResolutionError(Exception):
@@ -28,51 +28,51 @@ def fake_resolver(host, port, *args, **kwargs):
 
 class TestCheckPublicUrl:
     def test_accepts_https_url(self):
-        url = ps.check_public_url("https://example.com/some/path", resolver=fake_resolver)
+        url = check_public_url("https://example.com/some/path", resolver=fake_resolver)
         assert url == "https://example.com/some/path"
 
     def test_downgrades_http_kept_as_http(self):
-        url = ps.check_public_url("http://example.com", resolver=fake_resolver)
+        url = check_public_url("http://example.com", resolver=fake_resolver)
         assert url == "http://example.com"
 
     def test_rejects_non_http_scheme(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("ftp://example.com", resolver=fake_resolver)
+            check_public_url("ftp://example.com", resolver=fake_resolver)
 
     def test_rejects_javascript_scheme(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("javascript:alert(1)", resolver=fake_resolver)
+            check_public_url("javascript:alert(1)", resolver=fake_resolver)
 
     def test_rejects_userinfo(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://user:pass@example.com", resolver=fake_resolver)
+            check_public_url("https://user:pass@example.com", resolver=fake_resolver)
 
     def test_rejects_explicit_port(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://example.com:8080", resolver=fake_resolver)
+            check_public_url("https://example.com:8080", resolver=fake_resolver)
 
     def test_rejects_invalid_port(self):
         # An out-of-range port must raise ValidationError, not a bare ValueError.
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://example.com:99999", resolver=fake_resolver)
+            check_public_url("https://example.com:99999", resolver=fake_resolver)
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://example.com:abc", resolver=fake_resolver)
+            check_public_url("https://example.com:abc", resolver=fake_resolver)
 
     def test_rejects_private_ipv4(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://internal.example", resolver=fake_resolver)
+            check_public_url("https://internal.example", resolver=fake_resolver)
 
     def test_rejects_loopback(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://rebound.example", resolver=fake_resolver)
+            check_public_url("https://rebound.example", resolver=fake_resolver)
 
     def test_rejects_private_ipv6(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://v6private.example", resolver=fake_resolver)
+            check_public_url("https://v6private.example", resolver=fake_resolver)
 
     def test_rejects_unresolvable(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://nxdomain.invalid", resolver=fake_resolver)
+            check_public_url("https://nxdomain.invalid", resolver=fake_resolver)
 
     def test_rejects_empty_resolution(self):
         # An injectable resolver may return zero records; all() over an empty
@@ -81,22 +81,22 @@ class TestCheckPublicUrl:
             return []
 
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://empty.example", resolver=empty_resolver)
+            check_public_url("https://empty.example", resolver=empty_resolver)
 
     def test_rejects_github_host(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://wagtail.github.io", resolver=fake_resolver)
+            check_public_url("https://wagtail.github.io", resolver=fake_resolver)
 
     def test_rejects_github_pages_subdomain(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://github.io", resolver=fake_resolver)
+            check_public_url("https://github.io", resolver=fake_resolver)
 
     def test_ip_literal_private(self):
         with pytest.raises(ValidationError):
-            ps.check_public_url("http://169.254.169.254/latest/meta-data/", resolver=fake_resolver)
+            check_public_url("http://169.254.169.254/latest/meta-data/", resolver=fake_resolver)
 
     def test_ip_literal_public_ok(self):
-        url = ps.check_public_url("https://93.184.216.34", resolver=fake_resolver)
+        url = check_public_url("https://93.184.216.34", resolver=fake_resolver)
         assert url == "https://93.184.216.34"
 
     def test_rejects_mixed_public_private_records(self):
@@ -104,4 +104,4 @@ class TestCheckPublicUrl:
         # address: the client might connect to the private one, so the
         # URL must be rejected outright.
         with pytest.raises(ValidationError):
-            ps.check_public_url("https://mixed.example", resolver=fake_resolver)
+            check_public_url("https://mixed.example", resolver=fake_resolver)

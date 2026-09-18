@@ -2,7 +2,13 @@ from pathlib import Path
 
 import pytest
 
-import process_submission as ps
+from pipeline.proposal import (
+    check_slug_free,
+    existing_developers,
+    existing_site_origins,
+    make_slug,
+    match_developer,
+)
 
 # The lookup functions take the *developers* directory (matching Task 5's
 # `--content-dir src/content/developers` default), so point here.
@@ -11,48 +17,48 @@ CONTENT = Path(__file__).parent / "fixtures" / "content" / "developers"
 
 class TestMakeSlug:
     def test_basic(self):
-        assert ps.make_slug("Rock Kitchen Harris") == "rock-kitchen-harris"
+        assert make_slug("Rock Kitchen Harris") == "rock-kitchen-harris"
 
     def test_strips_punctuation(self):
-        assert ps.make_slug("Fröjd AB!") == "frojd-ab"
+        assert make_slug("Fröjd AB!") == "frojd-ab"
 
     def test_truncates_to_50(self):
-        assert len(ps.make_slug("x" * 200)) == 50
+        assert len(make_slug("x" * 200)) == 50
 
     def test_rejects_reserved(self):
         with pytest.raises(ValueError, match="reserved"):
-            ps.make_slug("public")
+            make_slug("public")
 
     def test_rejects_empty_result(self):
         with pytest.raises(ValueError):
-            ps.make_slug("///")
+            make_slug("///")
 
 
 class TestDeveloperLookup:
     def test_existing_developers_reads_frontmatter(self):
-        devs = ps.existing_developers(CONTENT)
+        devs = existing_developers(CONTENT)
         assert devs["frojd"] == "Fröjd"
 
     def test_match_developer_exact(self):
-        devs = ps.existing_developers(CONTENT)
-        assert ps.match_developer("fröjd", devs) == ("frojd", True)
+        devs = existing_developers(CONTENT)
+        assert match_developer("fröjd", devs) == ("frojd", True)
 
     def test_match_developer_no_match(self):
-        devs = ps.existing_developers(CONTENT)
-        result = ps.match_developer("Frojd Digital", devs)
+        devs = existing_developers(CONTENT)
+        result = match_developer("Frojd Digital", devs)
         assert isinstance(result, list)
 
 
 class TestDedup:
     def test_existing_site_origins(self):
-        assert ps.existing_site_origins(CONTENT) == {"http://www.visitsweden.com"}
+        assert existing_site_origins(CONTENT) == {"http://www.visitsweden.com"}
 
     def test_check_slug_free_site_collision(self):
         with pytest.raises(ValueError, match="already exists"):
-            ps.check_slug_free("site", "visit-sweden", CONTENT)
+            check_slug_free("site", "visit-sweden", CONTENT)
 
     def test_check_slug_free_new_site_ok(self):
-        ps.check_slug_free("site", "brand-new-site", CONTENT)
+        check_slug_free("site", "brand-new-site", CONTENT)
 
     def test_check_slug_free_new_developer_ok(self):
-        ps.check_slug_free("developer", "brand-new-dev", CONTENT)
+        check_slug_free("developer", "brand-new-dev", CONTENT)

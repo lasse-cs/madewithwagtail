@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-import process_submission as ps
+from pipeline.proposal import Rejection, build_proposal
 from test_proposal import make_proposal_kwargs  # noqa: F401  (fixture helper below)
 
 SCRIPT = Path(__file__).resolve().parents[2] / "scripts" / "submissions" / "process_submission.py"
@@ -88,7 +88,7 @@ class FakeResolutionError(Exception):
 
 class TestBuildProposal:
     def test_happy_path_new_developer(self):
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_exists is False
@@ -104,20 +104,20 @@ class TestBuildProposal:
             "### Confirmations",
             "### Other notes\n\nLaunched in 2024, redesign of an older site.\n\n### Confirmations",
         )
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.other_notes == "Launched in 2024, redesign of an older site."
 
     def test_other_notes_absent_is_none(self):
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.other_notes is None
 
     def test_existing_developer_inferred_from_exact_name(self):
         body = FORM_BODY.replace("### Developer name\n\nExample Co", "### Developer name\n\nFröjd")
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_exists is True
@@ -125,14 +125,14 @@ class TestBuildProposal:
 
     def test_existing_developer_inferred_case_insensitive(self):
         body = FORM_BODY.replace("### Developer name\n\nExample Co", "### Developer name\n\nfröjd")
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_exists is True
         assert proposal.developer_slug == "frojd"
 
     def test_unmatched_name_starts_new_profile(self):
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_exists is False
@@ -143,7 +143,7 @@ class TestBuildProposal:
         # Not an exact match, so a new profile — but reviewers are told
         # about the similar existing profile.
         body = FORM_BODY.replace("### Developer name\n\nExample Co", "### Developer name\n\nFröjd AB")
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_exists is False
@@ -154,22 +154,22 @@ class TestBuildProposal:
         # "Frojd" (no diacritics) doesn't match the "Fröjd" title, but its
         # slug collides with the existing profile directory.
         body = FORM_BODY.replace("### Developer name\n\nExample Co", "### Developer name\n\nFrojd")
-        with pytest.raises(ps.Rejection) as excinfo:
-            ps.build_proposal(
+        with pytest.raises(Rejection) as excinfo:
+            build_proposal(
                 body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
             )
         assert any("already exists" in r for r in excinfo.value.reasons)
 
     def test_rejects_unconfirmed_permission(self):
         body = FORM_BODY.replace("- [X] I am affiliated", "- [ ] I am affiliated")
-        with pytest.raises(ps.Rejection) as excinfo:
-            ps.build_proposal(body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver)
+        with pytest.raises(Rejection) as excinfo:
+            build_proposal(body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver)
         assert any("affiliated" in r for r in excinfo.value.reasons)
 
     def test_rejects_duplicate_origin(self):
         body = FORM_BODY.replace("https://example.com", "http://www.visitsweden.com")
-        with pytest.raises(ps.Rejection) as excinfo:
-            ps.build_proposal(body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver)
+        with pytest.raises(Rejection) as excinfo:
+            build_proposal(body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver)
         assert any("already" in r for r in excinfo.value.reasons)
 
     def test_no_response_optional_fields_accepted(self):
@@ -190,7 +190,7 @@ class TestBuildProposal:
             ("Capabilities", "multilingual"),
         ):
             body = body.replace(f"### {label}\n\n{value}\n", f"### {label}\n\n_No response_\n")
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_url is None
@@ -206,7 +206,7 @@ class TestBuildProposal:
         body = FORM_BODY.replace(
             "### Developer URL\n\nhttps://example.co", "### Developer URL\n\nexample.co"
         )
-        proposal = ps.build_proposal(
+        proposal = build_proposal(
             body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
         )
         assert proposal.developer_url == "https://example.co"
@@ -218,8 +218,8 @@ class TestBuildProposal:
         def bad_resolver(host, port, *a, **k):
             raise Bad(host)
 
-        with pytest.raises(ps.Rejection):
-            ps.build_proposal(FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=bad_resolver)
+        with pytest.raises(Rejection):
+            build_proposal(FORM_BODY, issue_number=7, content_dir=CONTENT, resolver=bad_resolver)
 
 
 class TestValidateCLI:
@@ -252,8 +252,8 @@ class TestModelLevelRejections:
 
     def test_over_long_title_rejected(self):
         body = FORM_BODY.replace("Example Site", "x" * 81)
-        with pytest.raises(ps.Rejection) as excinfo:
-            ps.build_proposal(
+        with pytest.raises(Rejection) as excinfo:
+            build_proposal(
                 body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
             )
         assert any("title" in reason and "80" in reason for reason in excinfo.value.reasons)
@@ -262,8 +262,8 @@ class TestModelLevelRejections:
         body = FORM_BODY.replace(
             "A wonderful site about things.", "y" * 801
         )
-        with pytest.raises(ps.Rejection) as excinfo:
-            ps.build_proposal(
+        with pytest.raises(Rejection) as excinfo:
+            build_proposal(
                 body, issue_number=7, content_dir=CONTENT, resolver=fake_resolver
             )
         assert any("800" in reason for reason in excinfo.value.reasons)

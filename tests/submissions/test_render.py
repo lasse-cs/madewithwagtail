@@ -8,7 +8,14 @@ from PIL import Image
 
 import pytest
 
-import process_submission as ps
+from pipeline.browser import is_private_browser_host
+from pipeline.logos import gather_logo_candidates, select_largest_logo
+from pipeline.net import (
+    MAX_RESPONSE_BYTES,
+    check_public_url,
+    fetch_page,
+    probe_admin_pages,
+)
 
 FIXTURES = Path(__file__).parent / "fixtures"
 WAGTAIL_HTML = (FIXTURES / "wagtail-home.html").read_text()
@@ -56,13 +63,18 @@ def local_resolver(host, port, *args, **kwargs):
 
 @pytest.fixture
 def url_guard(monkeypatch):
-    """Point check_public_url at the deterministic resolver."""
-    real = ps.check_public_url
-    monkeypatch.setattr(
-        ps,
-        "check_public_url",
-        lambda raw, resolver=None: real(raw, resolver=local_resolver),
-    )
+    """Point check_public_url at the deterministic resolver.
+
+    After the pipeline split, check_public_url is resolved in the module
+    of each caller: fetch_page resolves it in pipeline.net, while
+    gather_logo_candidates resolves it in pipeline.logos (its from-import
+    bound the original at import time). Patch both resolution sites so
+    every SSRF check still runs for real with only the resolver swapped;
+    select_largest_logo calls client.get directly (no URL validation).
+    """
+    guarded = lambda raw, resolver=None: check_public_url(raw, resolver=local_resolver)
+    monkeypatch.setattr("pipeline.net.check_public_url", guarded)
+    monkeypatch.setattr("pipeline.logos.check_public_url", guarded)
 
 
 class TestFetchPage:
@@ -79,7 +91,7 @@ class TestFetchPage:
                 return FakeResponse(200, WAGTAIL_HTML, url)
 
         client = HopClient({})
-        final_url, html = ps.fetch_page(client, hops[0])
+        final_url, html = fetch_page(client, hops[0])
         assert final_url == hops[-1]
         assert "generator" in html
         assert client.requested == hops
@@ -94,7 +106,7 @@ class TestFetchPage:
                 return resp
 
         with pytest.raises(ValueError, match="public"):
-            ps.fetch_page(RedirectClient({}), "https://example.com")
+            fetch_page(RedirectClient({}), "https://example.com")
 
     def test_rejects_too_many_redirects(self, url_guard):
         class LoopClient(FakeClient):
@@ -104,12 +116,12 @@ class TestFetchPage:
                 return resp
 
         with pytest.raises(ValueError, match="redirect"):
-            ps.fetch_page(LoopClient({}), "https://example.com")
+            fetch_page(LoopClient({}), "https://example.com")
 
 
 class TestGatherLogoCandidates:
     def test_explicit_logo_url_first(self, url_guard):
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             FakeClient({}), "", None, "https://cdn.example/logo.png"
         )
         assert candidates[0] == "https://cdn.example/logo.png"
@@ -117,11 +129,11 @@ class TestGatherLogoCandidates:
     def test_no_developer_url_yields_no_candidates(self, url_guard):
         """Without a Developer URL, only the explicit Logo URL is a candidate —
         the submitted site's icons are never used."""
-        assert ps.gather_logo_candidates(FakeClient({}), "", None, None) == []
+        assert gather_logo_candidates(FakeClient({}), "", None, None) == []
 
     def test_developer_page_link_icons(self, url_guard):
         html = '<link rel="apple-touch-icon" href="/touch.png"><link rel="icon" href="/fav.ico">'
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             FakeClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -135,7 +147,7 @@ class TestGatherLogoCandidates:
         # RFC 3986 join: an absolute reference in the developer page wins over
         # the origin — it must still pass check_public_url before fetching.
         html = '<link rel="icon" href="http://169.254.169.254/latest/meta-data/">'
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             FakeClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -146,7 +158,7 @@ class TestGatherLogoCandidates:
     def test_private_hostname_link_excluded(self, url_guard):
         # internal.example resolves to a private IP under local_resolver.
         html = '<link rel="icon" href="http://internal.example/icon.png">'
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             FakeClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -181,7 +193,7 @@ class TestGatherLogoCandidates:
             '<link rel="manifest" href="/manifest.webmanifest">'
             '<link rel="icon" href="/fav.ico">'
         )
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             ManifestClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -215,7 +227,7 @@ class TestGatherLogoCandidates:
                 return super().get(url, **kwargs)
 
         html = '<link rel="manifest" href="/manifest.json">'
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             PrivateManifestClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -233,7 +245,7 @@ class TestGatherLogoCandidates:
                 raise AssertionError(f"unwanted fetch of {url}")
 
         html = '<link rel="manifest" href="http://169.254.169.254/meta.json">'
-        candidates = ps.gather_logo_candidates(
+        candidates = gather_logo_candidates(
             GuardedClient({}), html, "https://example.com", None
         )
         assert candidates == [
@@ -287,8 +299,8 @@ class TestSelectLargestLogo:
             '<link rel="icon" href="/fav.ico">'
             '<link rel="apple-touch-icon" href="/touch.png">'
         )
-        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
-        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        candidates = gather_logo_candidates(client, html, "https://example.com", None)
+        selected = Image.open(io.BytesIO(select_largest_logo(client, candidates)))
         # 180px input survives encode_logo's 120px cap; the 32px one wouldn't.
         assert selected.format == "WEBP" and selected.size == (120, 120)
 
@@ -303,9 +315,9 @@ class TestSelectLargestLogo:
             '<link rel="icon" href="/a.png">'
             '<link rel="apple-touch-icon" href="/b.png">'
         )
-        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
+        candidates = gather_logo_candidates(client, html, "https://example.com", None)
         # Equal-size candidates: the earlier (more authoritative) one wins.
-        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        selected = Image.open(io.BytesIO(select_largest_logo(client, candidates)))
         assert selected.format == "WEBP" and selected.size == (64, 64)
         # Every candidate is fetched: the winner is measured, not assumed.
         assert client.requested == [
@@ -323,8 +335,8 @@ class TestSelectLargestLogo:
             }
         )
         html = '<link rel="icon" href="/broken.png"><link rel="icon" href="/good.png">'
-        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
-        selected = Image.open(io.BytesIO(ps.select_largest_logo(client, candidates)))
+        candidates = gather_logo_candidates(client, html, "https://example.com", None)
+        selected = Image.open(io.BytesIO(select_largest_logo(client, candidates)))
         assert selected.format == "WEBP" and selected.size == (96, 96)
 
     def test_returns_none_when_nothing_usable(self, url_guard):
@@ -332,8 +344,8 @@ class TestSelectLargestLogo:
             {"https://example.com/broken.png": (200, b"not an image")}
         )
         html = '<link rel="icon" href="/broken.png">'
-        candidates = ps.gather_logo_candidates(client, html, "https://example.com", None)
-        assert ps.select_largest_logo(client, candidates) is None
+        candidates = gather_logo_candidates(client, html, "https://example.com", None)
+        assert select_largest_logo(client, candidates) is None
 
 
 class TestProbeAdminPages:
@@ -349,17 +361,17 @@ class TestProbeAdminPages:
                 resp.headers = {"location": "https://example.com/login", "content-type": "text/html"}
                 return resp
 
-        assert ps.probe_admin_pages(RedirectClient({}), "https://example.com") == []
+        assert probe_admin_pages(RedirectClient({}), "https://example.com") == []
 
     def test_huge_content_length_skipped(self):
         class HugeClient(FakeClient):
             def get(self, url, **kwargs):
                 resp = FakeResponse(200, "wagtail everywhere", url)
-                resp.headers = {"content-type": "text/html", "content-length": str(ps.MAX_RESPONSE_BYTES + 1)}
+                resp.headers = {"content-type": "text/html", "content-length": str(MAX_RESPONSE_BYTES + 1)}
                 resp.content = b"x" * 10
                 return resp
 
-        assert ps.probe_admin_pages(HugeClient({}), "https://example.com") == []
+        assert probe_admin_pages(HugeClient({}), "https://example.com") == []
 
 
 class TestIsPrivateBrowserHost:
@@ -382,7 +394,7 @@ class TestIsPrivateBrowserHost:
         ],
     )
     def test_private_hosts_blocked(self, url):
-        assert ps.is_private_browser_host(url) is True
+        assert is_private_browser_host(url) is True
 
     @pytest.mark.parametrize(
         "url",
@@ -394,4 +406,4 @@ class TestIsPrivateBrowserHost:
         ],
     )
     def test_public_hosts_allowed(self, url):
-        assert ps.is_private_browser_host(url) is False
+        assert is_private_browser_host(url) is False

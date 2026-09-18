@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-import process_submission as ps
+from pipeline.proposal import Proposal
 
 
 def make_proposal_kwargs(**overrides):
@@ -28,26 +28,26 @@ def make_proposal_kwargs(**overrides):
 
 class TestProposal:
     def test_roundtrip_via_json(self):
-        proposal = ps.Proposal(**make_proposal_kwargs())
-        restored = ps.Proposal.model_validate_json(proposal.model_dump_json())
+        proposal = Proposal(**make_proposal_kwargs())
+        restored = Proposal.model_validate_json(proposal.model_dump_json())
         assert restored == proposal
 
     def test_rejects_extra_fields(self):
         with pytest.raises(ValidationError):
-            ps.Proposal(**make_proposal_kwargs(surprise="x"))
+            Proposal(**make_proposal_kwargs(surprise="x"))
 
     def test_rejects_bad_slug(self):
         with pytest.raises(ValidationError):
-            ps.Proposal(**make_proposal_kwargs(site_slug="../evil"))
+            Proposal(**make_proposal_kwargs(site_slug="../evil"))
 
     def test_rejects_long_title(self):
         with pytest.raises(ValidationError):
-            ps.Proposal(**make_proposal_kwargs(site_title="x" * 81))
+            Proposal(**make_proposal_kwargs(site_title="x" * 81))
 
     def test_similar_developers_default_empty(self):
-        proposal = ps.Proposal(**make_proposal_kwargs())
+        proposal = Proposal(**make_proposal_kwargs())
         assert proposal.similar_developers == []
 
     def test_rejects_bad_github_user(self):
         with pytest.raises(ValidationError):
-            ps.Proposal(**make_proposal_kwargs(github_user="not valid!"))
+            Proposal(**make_proposal_kwargs(github_user="not valid!"))
