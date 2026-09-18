@@ -14,9 +14,10 @@ export interface Props {
   title?: string;
   description?: string;
   ogImage?: OgImage;
+  noindex?: boolean;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description, ogImage, noindex } = Astro.props;
 const pageTitle = title ? `${title} | Made with Wagtail` : 'Made with Wagtail';
 const pageDescription =
   description ?? 'A showcase of sites made with Wagtail, the popular Django CMS.';
@@ -53,6 +54,7 @@ function navIsActive(path: string): boolean {
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription}>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {noindex && <meta name="robots" content="noindex">}
 
     <link rel="canonical" href={canonicalUrl}>
 
