@@ -3,8 +3,9 @@ import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import DeveloperCard from '../../../components/DeveloperCard.astro';
 import Pagination from '../../../components/Pagination.astro';
-import { withBase } from '../../../helpers.ts';
+import { absoluteUrl, withBase } from '../../../helpers.ts';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { collectionPageNode } from '../../../schema.ts';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allDevelopers = await getCollection('developers');
@@ -41,6 +42,19 @@ const { page } = Astro.props;
 // '/developers/'.
 const isFirstPage = page.currentPage === 1;
 
+// Listing schema; positions continue across the paginated series.
+const jsonLd = [
+  collectionPageNode({
+    path: isFirstPage ? '/developers/' : `/developers/page/${page.currentPage}/`,
+    name: isFirstPage ? 'Developers' : `Developers - Page ${page.currentPage}`,
+    items: page.data.map((dev: PaginatedDeveloper) => ({
+      name: dev.data.title,
+      url: absoluteUrl(`/developers/${dev.id}/`),
+    })),
+    positionOffset: page.start,
+  }),
+];
+
 interface PaginatedDeveloper {
   id: string;
   data: {
@@ -54,6 +68,7 @@ interface PaginatedDeveloper {
 <BaseLayout
   title={isFirstPage ? 'Developers' : `Developers - Page ${page.currentPage}`}
   canonical={isFirstPage ? '/developers/' : undefined}
+  jsonLd={jsonLd}
 >
   <div class="content-width">
     <div class="banner">

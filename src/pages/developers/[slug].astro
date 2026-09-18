@@ -4,10 +4,11 @@ import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import SiteCard from '../../components/SiteCard.astro';
-import { markdownExcerpt, withBase } from '../../helpers.ts';
+import { absoluteUrl, markdownExcerpt, withBase } from '../../helpers.ts';
 import { lookupImage } from '../../images.ts';
 import { formatLastUpdated, latestDate } from '../../lastmod.mjs';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbListNode, organizationNode } from '../../schema.ts';
 
 export const getStaticPaths = (async () => {
   const developers = await getCollection('developers');
@@ -48,9 +49,35 @@ const lastUpdated = formatLastUpdated(
 function getCooperator(cooperatorSlug: string) {
   return devMap.get(cooperatorSlug);
 }
+
+// Structured data: the developer as an Organization, plus the breadcrumb
+// trail (Home > Developers > <Developer>).
+const profilePath = `/developers/${developer.id}/`;
+const jsonLd = [
+  organizationNode({
+    path: profilePath,
+    name: developer.data.title,
+    companyUrl: developer.data.company_url,
+    description: markdownExcerpt(developer.body),
+    logo: logo?.src ?? null,
+    location: developer.data.location,
+    lat: developer.data.lat,
+    lon: developer.data.lon,
+    twitterHandler: developer.data.twitter_handler,
+    githubUser: developer.data.github_user,
+  }),
+  breadcrumbListNode([
+    { name: 'Developers', url: absoluteUrl('/developers/') },
+    { name: developer.data.title, url: absoluteUrl(profilePath) },
+  ]),
+];
 ---
 
-<BaseLayout title={developer.data.title} description={markdownExcerpt(developer.body)}>
+<BaseLayout
+  title={developer.data.title}
+  description={markdownExcerpt(developer.body)}
+  jsonLd={jsonLd}
+>
   <div class="site-content content-width">
     <Breadcrumbs ancestors={[{ title: 'Developers', url: withBase('/developers/') }]} />
 

@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content';
 import DeveloperCard from '../../components/DeveloperCard.astro';
 import Icon from '../../components/Icon.astro';
-import { withBase } from '../../helpers.ts';
+import { absoluteUrl, withBase } from '../../helpers.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { collectionPageNode } from '../../schema.ts';
 
 const allDevelopers = await getCollection('developers');
 const allSites = await getCollection('sites');
@@ -33,9 +34,21 @@ const sortedDevelopers = developersWithCounts.sort((a, b) => {
 const PAGE_SIZE = 12;
 const pageDevelopers = sortedDevelopers.slice(0, PAGE_SIZE);
 const totalPages = Math.ceil(sortedDevelopers.length / PAGE_SIZE);
+
+// Listing schema for the 12 developer cards on this page.
+const jsonLd = [
+  collectionPageNode({
+    path: '/developers/',
+    name: 'Developers',
+    items: pageDevelopers.map((dev) => ({
+      name: dev.data.title,
+      url: absoluteUrl(`/developers/${dev.id}/`),
+    })),
+  }),
+];
 ---
 
-<BaseLayout title="Developers">
+<BaseLayout title="Developers" jsonLd={jsonLd}>
   <div class="content-width">
     <div class="banner">
       <h1>Developers</h1>

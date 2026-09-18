@@ -3,8 +3,9 @@ import { getCollection } from 'astro:content';
 import Pagination from '../components/Pagination.astro';
 import SiteCard from '../components/SiteCard.astro';
 import TagPills from '../components/TagPills.astro';
-import { facetSlug, withBase } from '../helpers.ts';
+import { absoluteUrl, facetSlug, withBase } from '../helpers.ts';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { collectionPageNode } from '../schema.ts';
 
 const allSites = await getCollection('sites');
 const allDevelopers = await getCollection('developers');
@@ -35,9 +36,21 @@ const sectors = Array.from(sectorCounts.entries())
 function getCooperator(cooperatorSlug: string) {
   return developerMap.get(cooperatorSlug);
 }
+
+// Listing schema for the 12 cards on this page.
+const jsonLd = [
+  collectionPageNode({
+    path: '/',
+    name: 'Made with Wagtail',
+    items: pageSites.map((site) => ({
+      name: site.data.title,
+      url: absoluteUrl(`/developers/${site.id}/`),
+    })),
+  }),
+];
 ---
 
-<BaseLayout>
+<BaseLayout jsonLd={jsonLd}>
   <div class="banner content-width">
     <h1>A showcase of sites and apps made with Wagtail CMS</h1>
     <div class="intro">

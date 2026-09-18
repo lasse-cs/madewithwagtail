@@ -3,10 +3,11 @@ import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Icon from '../../../components/Icon.astro';
-import { facetSlug, markdownExcerpt, withBase } from '../../../helpers.ts';
+import { absoluteUrl, facetSlug, markdownExcerpt, withBase } from '../../../helpers.ts';
 import { lookupImage } from '../../../images.ts';
 import { formatLastUpdated } from '../../../lastmod.mjs';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { breadcrumbListNode, creativeWorkNode } from '../../../schema.ts';
 
 export const getStaticPaths = (async () => {
   const sites = await getCollection('sites');
@@ -48,12 +49,41 @@ const ogImage = screenshot
       alt: `Screenshot of the ${siteEntry.data.title} website`,
     }
   : undefined;
+
+// Structured data: the showcased site as a CreativeWork, plus the
+// breadcrumb trail (Home > Developers > <Developer> > <Site>).
+const sitePageUrl = absoluteUrl(`/developers/${siteEntry.id}/`);
+const parentDevUrl = parentDev ? absoluteUrl(`/developers/${parentDev.id}/`) : null;
+const jsonLd = [
+  creativeWorkNode({
+    path: `/developers/${siteEntry.id}/`,
+    name: siteEntry.data.title,
+    siteUrl: siteEntry.data.site_url,
+    description: markdownExcerpt(siteEntry.body),
+    image: screenshot?.src ?? null,
+    datePublished: siteEntry.data.first_published_at,
+    dateModified: siteEntry.data.latest_revision_created_at,
+    keywords: [
+      ...siteEntry.data.sector,
+      ...siteEntry.data.site_type,
+      ...siteEntry.data.capability,
+      ...siteEntry.data.technologies,
+    ],
+    creatorId: parentDevUrl ? `${parentDevUrl}#organization` : null,
+  }),
+  breadcrumbListNode([
+    { name: 'Developers', url: absoluteUrl('/developers/') },
+    ...(parentDev ? [{ name: parentDev.data.title, url: parentDevUrl ?? '' }] : []),
+    { name: siteEntry.data.title, url: sitePageUrl },
+  ]),
+];
 ---
 
 <BaseLayout
   title={siteEntry.data.title}
   description={markdownExcerpt(siteEntry.body)}
   ogImage={ogImage}
+  jsonLd={jsonLd}
 >
   <div class="site-content content-width">
     <Breadcrumbs

@@ -17,6 +17,13 @@ export function facetSlug(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+// Absolute URL for contexts that require one (structured data, social tags).
+// Falls back to the production site URL where Astro.site is unset.
+export function absoluteUrl(path: string): string {
+  const url = new URL(withBase(path), import.meta.env.SITE || 'https://madewithwagtail.org');
+  return url.href;
+}
+
 // Plain-text excerpt of a Markdown body, for page meta descriptions: strips
 // markup, collapses whitespace, and truncates on a word boundary. Returns
 // undefined for empty bodies so callers can fall back to the site default.

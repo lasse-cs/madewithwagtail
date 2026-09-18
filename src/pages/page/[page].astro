@@ -3,8 +3,9 @@ import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import Pagination from '../../components/Pagination.astro';
 import SiteCard from '../../components/SiteCard.astro';
-import { withBase } from '../../helpers.ts';
+import { absoluteUrl, withBase } from '../../helpers.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { collectionPageNode } from '../../schema.ts';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allSites = await getCollection('sites');
@@ -51,12 +52,26 @@ const developerMap = new Map(
 const isFirstPage = page.currentPage === 1;
 const firstSite = page.start + 1;
 const lastSite = page.end + 1;
+
+// Listing schema; positions continue across the paginated series.
+const jsonLd = [
+  collectionPageNode({
+    path: isFirstPage ? '/' : `/page/${page.currentPage}/`,
+    name: isFirstPage ? 'Made with Wagtail' : `Made with Wagtail - Page ${page.currentPage}`,
+    items: page.data.map((site: PaginatedSite) => ({
+      name: site.data.title,
+      url: absoluteUrl(`/developers/${site.id}/`),
+    })),
+    positionOffset: page.start,
+  }),
+];
 ---
 
 <BaseLayout
   title={isFirstPage ? undefined : `Page ${page.currentPage}`}
   description={`A showcase of sites and applications made with Wagtail CMS — sites ${firstSite}–${lastSite} of ${page.total}.`}
   canonical={isFirstPage ? '/' : undefined}
+  jsonLd={jsonLd}
 >
   <div class="content-width">
     <div class="banner">
