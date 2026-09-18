@@ -74,7 +74,9 @@ const jsonLd = [
   }),
   breadcrumbListNode([
     { name: 'Developers', url: absoluteUrl('/developers/') },
-    ...(parentDevUrl ? [{ name: parentDev.data.title, url: parentDevUrl }] : []),
+    ...(parentDev
+      ? [{ name: parentDev.data.title, url: absoluteUrl(`/developers/${parentDev.id}/`) }]
+      : []),
     { name: siteEntry.data.title, url: sitePageUrl },
   ]),
 ];
