@@ -1,7 +1,7 @@
 ---
 title: Jobs Alberta
-first_published_at: "2017-11-22T09:56:55.999770+13:00"
-latest_revision_created_at: "2017-11-22T09:57:40.864703+13:00"
+first_published_at: '2017-11-22T09:56:55.999770+13:00'
+latest_revision_created_at: '2017-11-22T09:57:40.864703+13:00'
 site_url: https://www.jobsalberta.com/
 sector:
   - government

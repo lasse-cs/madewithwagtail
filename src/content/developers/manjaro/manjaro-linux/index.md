@@ -1,7 +1,7 @@
 ---
 title: Manjaro Linux
-first_published_at: "2023-02-07T20:18:59.063491+00:00"
-latest_revision_created_at: "2023-02-07T20:18:59.063491+00:00"
+first_published_at: '2023-02-07T20:18:59.063491+00:00'
+latest_revision_created_at: '2023-02-07T20:18:59.063491+00:00'
 site_url: https://manjaro.org
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Computest
-first_published_at: "2021-12-04T11:58:34.848833+13:00"
-latest_revision_created_at: "2021-12-04T11:58:34.769455+13:00"
+first_published_at: '2021-12-04T11:58:34.848833+13:00'
+latest_revision_created_at: '2021-12-04T11:58:34.769455+13:00'
 site_url: https://defion.security/nl/
 sector:
   - professional services

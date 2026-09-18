@@ -1,7 +1,7 @@
 ---
 title: Marine Conservation Society
-first_published_at: "2021-09-27T14:29:12.882835+00:00"
-latest_revision_created_at: "2021-09-27T14:29:12.882835+00:00"
+first_published_at: '2021-09-27T14:29:12.882835+00:00'
+latest_revision_created_at: '2021-09-27T14:29:12.882835+00:00'
 site_url: https://www.mcsuk.org
 sector:
   - non-profit

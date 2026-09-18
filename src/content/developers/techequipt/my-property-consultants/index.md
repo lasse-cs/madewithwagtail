@@ -1,7 +1,7 @@
 ---
 title: My Property Consultants
-first_published_at: "2020-02-05T12:44:00.244375+13:00"
-latest_revision_created_at: "2020-02-05T12:44:00.186567+13:00"
+first_published_at: '2020-02-05T12:44:00.244375+13:00'
+latest_revision_created_at: '2020-02-05T12:44:00.186567+13:00'
 site_url: https://www.mypropertyconsultants.com.au/
 sector:
   - industry

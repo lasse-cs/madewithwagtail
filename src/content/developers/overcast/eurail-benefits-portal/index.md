@@ -1,7 +1,7 @@
 ---
 title: EUrail Benefits Portal
-first_published_at: "2022-01-18T20:29:05.781211+13:00"
-latest_revision_created_at: "2022-01-18T20:29:05.672514+13:00"
+first_published_at: '2022-01-18T20:29:05.781211+13:00'
+latest_revision_created_at: '2022-01-18T20:29:05.672514+13:00'
 site_url: https://benefitsportal.interrail.com/
 sector:
   - travel

@@ -1,12 +1,12 @@
 ---
 title: Lukkien
-first_published_at: "2015-10-22T13:52:33.118204+13:00"
-latest_revision_created_at: "2016-05-18T18:07:24.653825+12:00"
+first_published_at: '2015-10-22T13:52:33.118204+13:00'
+latest_revision_created_at: '2026-09-18T21:51:58.427961+00:00'
 location: Ede, The Netherlands
-lat: "52.022567"
-lon: "5.624914200000035"
+lat: '52.022567'
+lon: '5.624914200000035'
 company_url: https://www.lukkien.com
-twitter_handler: "@lukkien"
+twitter_handler: '@lukkien'
 github_user: LUKKIEN
 ---
 

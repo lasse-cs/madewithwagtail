@@ -1,7 +1,7 @@
 ---
 title: Digital Guide Kunstmuseum Winterthur
-first_published_at: "2025-07-11T12:38:57.134318+00:00"
-latest_revision_created_at: "2025-07-11T12:38:57.134318+00:00"
+first_published_at: '2025-07-11T12:38:57.134318+00:00'
+latest_revision_created_at: '2025-07-11T12:38:57.134318+00:00'
 site_url: https://digital.kmw.ch/en/
 sector:
   - culture

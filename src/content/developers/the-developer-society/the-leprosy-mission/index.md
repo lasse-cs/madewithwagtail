@@ -1,7 +1,7 @@
 ---
 title: The Leprosy Mission
-first_published_at: "2026-03-26T11:48:44.507200+00:00"
-latest_revision_created_at: "2026-03-26T11:48:44.507200+00:00"
+first_published_at: '2026-03-26T11:48:44.507200+00:00'
+latest_revision_created_at: '2026-03-26T11:48:44.507200+00:00'
 site_url: https://www.leprosymission.org/
 sector:
   - non-profit

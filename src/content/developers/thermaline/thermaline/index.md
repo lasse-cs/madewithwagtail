@@ -1,7 +1,7 @@
 ---
 title: Thermaline
-first_published_at: "2016-05-10T11:26:25.758486+12:00"
-latest_revision_created_at: "2016-05-10T11:26:25.720475+12:00"
+first_published_at: '2016-05-10T11:26:25.758486+12:00'
+latest_revision_created_at: '2016-05-10T11:26:25.720475+12:00'
 site_url: https://www.thermaline.com/
 ---
 

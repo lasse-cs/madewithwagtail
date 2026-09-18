@@ -1,7 +1,7 @@
 ---
 title: First Presbyterian Church - Bozeman
-first_published_at: "2017-08-07T15:11:24.015662+12:00"
-latest_revision_created_at: "2017-08-07T15:11:23.981819+12:00"
+first_published_at: '2017-08-07T15:11:24.015662+12:00'
+latest_revision_created_at: '2017-08-07T15:11:23.981819+12:00'
 site_url: https://fpcbozeman.org
 sector:
   - non-profit

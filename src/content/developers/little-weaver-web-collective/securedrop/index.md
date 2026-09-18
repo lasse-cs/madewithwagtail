@@ -1,7 +1,7 @@
 ---
 title: SecureDrop
-first_published_at: "2018-05-01T17:21:50.896132+12:00"
-latest_revision_created_at: "2018-05-01T17:21:50.849464+12:00"
+first_published_at: '2018-05-01T17:21:50.896132+12:00'
+latest_revision_created_at: '2018-05-01T17:21:50.849464+12:00'
 site_url: https://securedrop.org/
 sector:
   - technology

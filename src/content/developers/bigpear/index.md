@@ -1,10 +1,10 @@
 ---
 title: BigPear
-first_published_at: "2021-10-13T16:56:46.287487+13:00"
-latest_revision_created_at: "2021-10-13T16:56:46.238237+13:00"
+first_published_at: '2021-10-13T16:56:46.287487+13:00'
+latest_revision_created_at: '2026-09-18T21:47:14.836897+00:00'
 location: Rio Ceballos, Argentina
-lat: "-31.173062"
-lon: "-64.313296"
+lat: '-31.173062'
+lon: '-64.313296'
 company_url: https://bigpear.com.ar/
 online_profiles:
   - https://gitlab.com/bigpear/

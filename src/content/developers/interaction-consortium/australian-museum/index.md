@@ -1,7 +1,7 @@
 ---
 title: Australian Museum
-first_published_at: "2021-12-04T12:08:19.418365+13:00"
-latest_revision_created_at: "2021-12-04T12:08:19.327605+13:00"
+first_published_at: '2021-12-04T12:08:19.418365+13:00'
+latest_revision_created_at: '2021-12-04T12:08:19.327605+13:00'
 site_url: https://australian.museum/
 sector:
   - culture

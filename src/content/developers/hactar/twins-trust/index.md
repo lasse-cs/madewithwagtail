@@ -1,7 +1,7 @@
 ---
 title: Twins Trust
-first_published_at: "2026-07-14T09:36:02.517184+00:00"
-latest_revision_created_at: "2026-07-14T09:36:02.517184+00:00"
+first_published_at: '2026-07-14T09:36:02.517184+00:00'
+latest_revision_created_at: '2026-07-14T09:36:02.517184+00:00'
 site_url: https://twinstrust.org
 sector:
   - healthcare

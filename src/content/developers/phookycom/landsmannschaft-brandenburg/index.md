@@ -1,7 +1,7 @@
 ---
 title: Landsmannschaft Brandenburg
-first_published_at: "2021-12-12T04:17:20.583997+13:00"
-latest_revision_created_at: "2021-12-12T04:17:20.495168+13:00"
+first_published_at: '2021-12-12T04:17:20.583997+13:00'
+latest_revision_created_at: '2021-12-12T04:17:20.495168+13:00'
 site_url: https://www.landsmannschaft-brandenburg.de/
 sector:
   - non-profit

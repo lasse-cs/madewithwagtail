@@ -1,7 +1,7 @@
 ---
 title: Berliner Register
-first_published_at: "2023-08-16T13:05:30.966895+00:00"
-latest_revision_created_at: "2023-08-16T13:05:30.966895+00:00"
+first_published_at: '2023-08-16T13:05:30.966895+00:00'
+latest_revision_created_at: '2023-08-16T13:05:30.966895+00:00'
 site_url: https://berliner-register.de
 sector:
   - non-profit

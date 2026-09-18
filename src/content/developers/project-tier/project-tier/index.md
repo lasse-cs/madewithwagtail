@@ -1,7 +1,7 @@
 ---
 title: Project TIER
-first_published_at: "2019-09-24T14:01:28.158094+12:00"
-latest_revision_created_at: "2019-10-23T11:09:49.168241+13:00"
+first_published_at: '2019-09-24T14:01:28.158094+12:00'
+latest_revision_created_at: '2019-10-23T11:09:49.168241+13:00'
 site_url: https://www.projecttier.org/
 sector:
   - research

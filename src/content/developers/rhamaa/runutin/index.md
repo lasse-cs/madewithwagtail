@@ -1,7 +1,7 @@
 ---
 title: Runutin
-first_published_at: "2026-03-31T14:44:31.766615+00:00"
-latest_revision_created_at: "2026-03-31T14:44:31.766615+00:00"
+first_published_at: '2026-03-31T14:44:31.766615+00:00'
+latest_revision_created_at: '2026-03-31T14:44:31.766615+00:00'
 site_url: https://runutin.com/
 ---
 

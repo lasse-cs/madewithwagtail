@@ -1,7 +1,7 @@
 ---
 title: Stoffenmanager
-first_published_at: "2022-09-02T20:29:58.905057+12:00"
-latest_revision_created_at: "2022-09-02T20:29:58.851237+12:00"
+first_published_at: '2022-09-02T20:29:58.905057+12:00'
+latest_revision_created_at: '2022-09-02T20:29:58.851237+12:00'
 site_url: https://stoffenmanager.com/
 ---
 

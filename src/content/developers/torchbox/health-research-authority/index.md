@@ -1,7 +1,7 @@
 ---
 title: Health Research Authority
-first_published_at: "2018-02-07T18:31:29.138931+13:00"
-latest_revision_created_at: "2018-02-07T18:31:29.099157+13:00"
+first_published_at: '2018-02-07T18:31:29.138931+13:00'
+latest_revision_created_at: '2018-02-07T18:31:29.099157+13:00'
 site_url: https://www.hra.nhs.uk/
 sector:
   - healthcare

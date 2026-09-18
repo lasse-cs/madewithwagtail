@@ -1,7 +1,7 @@
 ---
 title: Barrique Wijnhandel
-first_published_at: "2018-05-09T03:10:03.300391+12:00"
-latest_revision_created_at: "2018-08-17T17:59:53.798340+12:00"
+first_published_at: '2018-05-09T03:10:03.300391+12:00'
+latest_revision_created_at: '2018-08-17T17:59:53.798340+12:00'
 site_url: https://www.barriquewijnhandel.nl/
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Daily Sangram
-first_published_at: "2025-05-05T07:58:56.687727+00:00"
-latest_revision_created_at: "2025-05-05T07:58:56.687727+00:00"
+first_published_at: '2025-05-05T07:58:56.687727+00:00'
+latest_revision_created_at: '2025-05-05T07:58:56.687727+00:00'
 site_url: https://dailysangram.com/
 site_type:
   - news

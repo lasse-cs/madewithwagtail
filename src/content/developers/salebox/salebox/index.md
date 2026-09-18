@@ -1,7 +1,7 @@
 ---
 title: Salebox
-first_published_at: "2020-05-13T18:28:27.256785+12:00"
-latest_revision_created_at: "2020-05-13T18:29:06.341307+12:00"
+first_published_at: '2020-05-13T18:28:27.256785+12:00'
+latest_revision_created_at: '2020-05-13T18:29:06.341307+12:00'
 site_url: https://salebox.io
 sector:
   - retail

@@ -1,7 +1,7 @@
 ---
 title: Stadt Land Food
-first_published_at: "2019-09-23T09:56:41.772470+12:00"
-latest_revision_created_at: "2019-09-23T10:00:21.823386+12:00"
+first_published_at: '2019-09-23T09:56:41.772470+12:00'
+latest_revision_created_at: '2019-09-23T10:00:21.823386+12:00'
 site_url: https://markthalleneun.de/maerkte/stadt-land-food/
 sector:
   - food

@@ -1,7 +1,7 @@
 ---
 title: Baikque
-first_published_at: "2019-09-23T11:51:31.189742+12:00"
-latest_revision_created_at: "2019-10-23T11:12:56.360992+13:00"
+first_published_at: '2019-09-23T11:51:31.189742+12:00'
+latest_revision_created_at: '2019-10-23T11:12:56.360992+13:00'
 site_url: https://batikque.ru
 sector:
   - consumer

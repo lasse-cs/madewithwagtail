@@ -1,7 +1,7 @@
 ---
 title: Telling the Real Story
-first_published_at: "2021-07-06T15:58:21.518466+12:00"
-latest_revision_created_at: "2021-07-06T16:05:16.655202+12:00"
+first_published_at: '2021-07-06T15:58:21.518466+12:00'
+latest_revision_created_at: '2021-07-06T16:05:16.655202+12:00'
 site_url: https://www.tellingtherealstory.org
 sector:
   - arts

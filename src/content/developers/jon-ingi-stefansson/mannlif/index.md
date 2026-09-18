@@ -1,7 +1,7 @@
 ---
 title: Mannlíf
-first_published_at: "2025-09-03T23:24:05.706641+00:00"
-latest_revision_created_at: "2025-09-03T23:24:05.706641+00:00"
+first_published_at: '2025-09-03T23:24:05.706641+00:00'
+latest_revision_created_at: '2025-09-03T23:24:05.706641+00:00'
 site_url: https://mannlif.is
 site_type:
   - news

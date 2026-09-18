@@ -1,7 +1,7 @@
 ---
 title: Buckinghamshire County Council
-first_published_at: "2022-01-06T05:34:05.704013+13:00"
-latest_revision_created_at: "2022-01-06T06:17:24.991852+13:00"
+first_published_at: '2022-01-06T05:34:05.704013+13:00'
+latest_revision_created_at: '2022-01-06T06:17:24.991852+13:00'
 site_url: https://www.buckinghamshire.gov.uk
 sector:
   - non-profit

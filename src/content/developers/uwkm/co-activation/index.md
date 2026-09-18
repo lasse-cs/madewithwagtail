@@ -1,7 +1,7 @@
 ---
 title: Co-Activation
-first_published_at: "2021-12-13T10:50:18.661687+13:00"
-latest_revision_created_at: "2021-12-13T10:50:18.558113+13:00"
+first_published_at: '2021-12-13T10:50:18.661687+13:00'
+latest_revision_created_at: '2021-12-13T10:50:18.558113+13:00'
 site_url: https://co-activation.com/
 ---
 

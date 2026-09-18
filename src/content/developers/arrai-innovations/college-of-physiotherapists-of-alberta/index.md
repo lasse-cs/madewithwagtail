@@ -1,7 +1,7 @@
 ---
 title: College of Physiotherapists of Alberta
-first_published_at: "2023-03-02T21:08:44.178551+00:00"
-latest_revision_created_at: "2023-03-02T21:08:44.178551+00:00"
+first_published_at: '2023-03-02T21:08:44.178551+00:00'
+latest_revision_created_at: '2023-03-02T21:08:44.178551+00:00'
 site_url: https://www.cpta.ab.ca
 sector:
   - non-profit

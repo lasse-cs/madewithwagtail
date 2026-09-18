@@ -1,7 +1,7 @@
 ---
 title: Sorpa
-first_published_at: "2024-08-07T01:54:09.228506+12:00"
-latest_revision_created_at: "2024-08-07T01:54:09.074695+12:00"
+first_published_at: '2024-08-07T01:54:09.228506+12:00'
+latest_revision_created_at: '2024-08-07T01:54:09.074695+12:00'
 site_url: https://www.sorpa.is/
 sector:
   - environment

@@ -1,8 +1,9 @@
 ---
-title: LIFE AR (The Least Developed Countries Initiative for Effective Adaptation
+title:
+  LIFE AR (The Least Developed Countries Initiative for Effective Adaptation
   and Resilience)
-first_published_at: "2025-10-07T13:23:37.437924+00:00"
-latest_revision_created_at: "2025-10-07T13:23:37.437924+00:00"
+first_published_at: '2025-10-07T13:23:37.437924+00:00'
+latest_revision_created_at: '2025-10-07T13:23:37.437924+00:00'
 site_url: https://www.life-ar.org/en/
 sector:
   - non-profit

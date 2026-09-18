@@ -1,7 +1,7 @@
 ---
 title: Netherlands Food Partnership
-first_published_at: "2021-08-26T00:40:15.864573+12:00"
-latest_revision_created_at: "2021-08-26T00:40:15.794477+12:00"
+first_published_at: '2021-08-26T00:40:15.864573+12:00'
+latest_revision_created_at: '2021-08-26T00:40:15.794477+12:00'
 site_url: https://www.nlfoodpartnership.com/
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Grootste Museum van Nederland
-first_published_at: "2018-01-31T13:15:40.350362+13:00"
-latest_revision_created_at: "2018-01-31T13:15:40.299898+13:00"
+first_published_at: '2018-01-31T13:15:40.350362+13:00'
+latest_revision_created_at: '2018-01-31T13:15:40.299898+13:00'
 site_url: https://www.grootstemuseum.nl
 sector:
   - arts

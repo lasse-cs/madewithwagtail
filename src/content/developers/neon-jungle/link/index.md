@@ -1,7 +1,7 @@
 ---
 title: The Link
-first_published_at: "2017-11-22T10:57:14.957704+13:00"
-latest_revision_created_at: "2020-06-25T15:20:13.941338+12:00"
+first_published_at: '2017-11-22T10:57:14.957704+13:00'
+latest_revision_created_at: '2020-06-25T15:20:13.941338+12:00'
 site_url: https://thelink.org.au/
 sector:
   - education

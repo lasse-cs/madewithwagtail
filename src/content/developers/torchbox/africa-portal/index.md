@@ -1,7 +1,7 @@
 ---
 title: Africa Portal
-first_published_at: "2018-01-16T11:01:16.409890+13:00"
-latest_revision_created_at: "2018-01-16T11:01:16.361082+13:00"
+first_published_at: '2018-01-16T11:01:16.409890+13:00'
+latest_revision_created_at: '2018-01-16T11:01:16.361082+13:00'
 site_url: https://www.africaportal.org/
 sector:
   - non-profit

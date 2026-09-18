@@ -1,7 +1,7 @@
 ---
 title: Mansfields
-first_published_at: "2021-12-08T15:34:58.016245+13:00"
-latest_revision_created_at: "2025-05-19T21:38:42.419283+12:00"
+first_published_at: '2021-12-08T15:34:58.016245+13:00'
+latest_revision_created_at: '2025-05-19T21:38:42.419283+12:00'
 site_url: https://mansfields.net
 sector:
   - food

@@ -1,7 +1,7 @@
 ---
 title: lichtenberger.partner – attorneys at law
-first_published_at: "2022-10-18T08:44:59.669087+00:00"
-latest_revision_created_at: "2022-10-18T08:44:59.669087+00:00"
+first_published_at: '2022-10-18T08:44:59.669087+00:00'
+latest_revision_created_at: '2022-10-18T08:44:59.669087+00:00'
 site_url: https://www.lichtenberger-partner.at/en/
 sector:
   - professional services

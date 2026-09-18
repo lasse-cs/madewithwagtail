@@ -1,7 +1,7 @@
 ---
 title: Vohm
-first_published_at: "2021-07-06T15:55:03.620943+12:00"
-latest_revision_created_at: "2021-07-06T15:55:03.555761+12:00"
+first_published_at: '2021-07-06T15:55:03.620943+12:00'
+latest_revision_created_at: '2026-09-18T21:56:43.663041+00:00'
 location: Cambridgeshire, UK
 company_url: https://www.vohm.com
 ---

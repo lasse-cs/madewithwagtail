@@ -1,7 +1,7 @@
 ---
 title: Pangea Festival
-first_published_at: "2024-03-27T16:16:06.271813+00:00"
-latest_revision_created_at: "2024-03-27T16:16:06.271813+00:00"
+first_published_at: '2024-03-27T16:16:06.271813+00:00'
+latest_revision_created_at: '2024-03-27T16:16:06.271813+00:00'
 site_url: https://www.aboutyoupangea-festival.de/
 sector:
   - arts

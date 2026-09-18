@@ -1,7 +1,7 @@
 ---
 title: Edge Foundation
-first_published_at: "2025-10-07T13:31:13.508552+00:00"
-latest_revision_created_at: "2025-10-07T13:31:13.508552+00:00"
+first_published_at: '2025-10-07T13:31:13.508552+00:00'
+latest_revision_created_at: '2025-10-07T13:31:13.508552+00:00'
 site_url: https://www.edge.co.uk
 sector:
   - education

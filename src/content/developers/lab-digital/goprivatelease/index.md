@@ -1,7 +1,7 @@
 ---
 title: GoPrivateLease
-first_published_at: "2017-04-26T23:58:56.652493+12:00"
-latest_revision_created_at: "2017-07-21T12:10:07.483022+12:00"
+first_published_at: '2017-04-26T23:58:56.652493+12:00'
+latest_revision_created_at: '2017-07-21T12:10:07.483022+12:00'
 site_url: https://www.goprivatelease.nl/
 sector:
   - finance

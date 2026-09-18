@@ -1,7 +1,7 @@
 ---
 title: Maakkunde
-first_published_at: "2018-07-13T23:30:06.928719+12:00"
-latest_revision_created_at: "2018-07-13T23:30:06.847077+12:00"
+first_published_at: '2018-07-13T23:30:06.928719+12:00'
+latest_revision_created_at: '2018-07-13T23:30:06.847077+12:00'
 site_url: https://maakkunde.nl/
 in_cooperation_with_slug: four-digits
 sector:

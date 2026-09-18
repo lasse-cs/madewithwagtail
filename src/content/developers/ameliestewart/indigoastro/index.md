@@ -1,7 +1,7 @@
 ---
 title: Indigoastro
-first_published_at: "2020-01-10T12:30:16.037838+13:00"
-latest_revision_created_at: "2020-01-10T12:30:37.477899+13:00"
+first_published_at: '2020-01-10T12:30:16.037838+13:00'
+latest_revision_created_at: '2020-01-10T12:30:37.477899+13:00'
 site_url: https://indigoastro.com/
 ---
 

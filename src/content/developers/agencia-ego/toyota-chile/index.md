@@ -1,7 +1,7 @@
 ---
 title: Toyota Chile
-first_published_at: "2021-01-19T17:41:07.448472+00:00"
-latest_revision_created_at: "2021-01-19T17:41:07.448472+00:00"
+first_published_at: '2021-01-19T17:41:07.448472+00:00'
+latest_revision_created_at: '2021-01-19T17:41:07.448472+00:00'
 site_url: https://www.toyota.cl
 sector:
   - industry

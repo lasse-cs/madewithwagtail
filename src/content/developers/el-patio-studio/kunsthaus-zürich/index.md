@@ -1,7 +1,7 @@
 ---
 title: Kunsthaus Zürich
-first_published_at: "2019-09-23T10:27:50.563201+12:00"
-latest_revision_created_at: "2019-09-23T10:27:50.527103+12:00"
+first_published_at: '2019-09-23T10:27:50.563201+12:00'
+latest_revision_created_at: '2019-09-23T10:27:50.527103+12:00'
 site_url: https://www.kunsthaus.ch
 sector:
   - culture

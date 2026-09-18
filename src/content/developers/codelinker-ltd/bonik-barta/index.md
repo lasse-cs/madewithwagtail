@@ -1,7 +1,7 @@
 ---
 title: Bonik Barta
-first_published_at: "2025-05-05T08:33:19.715832+00:00"
-latest_revision_created_at: "2025-05-05T08:33:19.715832+00:00"
+first_published_at: '2025-05-05T08:33:19.715832+00:00'
+latest_revision_created_at: '2025-05-05T08:33:19.715832+00:00'
 site_url: https://www.bonikbarta.com
 site_type:
   - news

@@ -1,7 +1,7 @@
 ---
 title: Hebammenst√ºble Fachsenfeld
-first_published_at: "2021-10-13T16:44:45.326521+13:00"
-latest_revision_created_at: "2021-10-13T16:44:44.968861+13:00"
+first_published_at: '2021-10-13T16:44:45.326521+13:00'
+latest_revision_created_at: '2021-10-13T16:44:44.968861+13:00'
 site_url: https://www.hanna-rieber.de
 sector:
   - healthcare

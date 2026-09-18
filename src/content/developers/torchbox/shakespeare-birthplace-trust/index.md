@@ -1,7 +1,7 @@
 ---
 title: The Shakespeare Birthplace Trust
-first_published_at: "2018-01-16T11:06:31.979302+13:00"
-latest_revision_created_at: "2018-01-16T11:06:31.932268+13:00"
+first_published_at: '2018-01-16T11:06:31.979302+13:00'
+latest_revision_created_at: '2018-01-16T11:06:31.932268+13:00'
 site_url: https://www.shakespeare.org.uk/
 sector:
   - non-profit

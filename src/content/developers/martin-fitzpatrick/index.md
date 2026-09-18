@@ -1,7 +1,7 @@
 ---
 title: Martin Fitzpatrick
-first_published_at: "2019-09-23T11:52:45.083083+12:00"
-latest_revision_created_at: "2019-09-23T11:52:45.051211+12:00"
+first_published_at: '2019-09-23T11:52:45.083083+12:00'
+latest_revision_created_at: '2026-09-18T21:52:13.024432+00:00'
 location: Utrecht
 company_url: https://www.mfitzp.com
 twitter_handler: '@mfitzp'

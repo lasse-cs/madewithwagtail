@@ -1,7 +1,7 @@
 ---
 title: IFISC
-first_published_at: "2019-09-23T11:33:15.387871+12:00"
-latest_revision_created_at: "2019-09-23T11:33:15.350023+12:00"
+first_published_at: '2019-09-23T11:33:15.387871+12:00'
+latest_revision_created_at: '2019-09-23T11:33:15.350023+12:00'
 site_url: https://ifisc.uib-csic.es
 sector:
   - research

@@ -1,7 +1,7 @@
 ---
 title: International Land Coalition - Uneven Ground Report
-first_published_at: "2026-03-26T11:08:47.052951+00:00"
-latest_revision_created_at: "2026-03-26T11:08:47.052951+00:00"
+first_published_at: '2026-03-26T11:08:47.052951+00:00'
+latest_revision_created_at: '2026-03-26T11:08:47.052951+00:00'
 site_url: https://www.landcoalition.org/en/uneven-ground/
 sector:
   - non-profit

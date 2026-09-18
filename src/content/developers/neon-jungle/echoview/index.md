@@ -1,7 +1,7 @@
 ---
 title: Echoview
-first_published_at: "2021-10-05T18:23:53.703423+13:00"
-latest_revision_created_at: "2021-10-05T18:23:53.620858+13:00"
+first_published_at: '2021-10-05T18:23:53.703423+13:00'
+latest_revision_created_at: '2021-10-05T18:23:53.620858+13:00'
 site_url: https://echoview.com/
 sector:
   - science

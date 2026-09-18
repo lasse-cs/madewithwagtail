@@ -1,7 +1,7 @@
 ---
 title: LeoTrippi
-first_published_at: "2026-09-11T12:56:11.921322+00:00"
-latest_revision_created_at: "2026-09-11T12:56:11.921322+00:00"
+first_published_at: '2026-09-11T12:56:11.921322+00:00'
+latest_revision_created_at: '2026-09-11T12:56:11.921322+00:00'
 site_url: https://www.leotrippi.com/
 sector:
   - travel

@@ -1,7 +1,7 @@
 ---
 title: TKH Trust Office Foundation
-first_published_at: "2019-10-09T10:50:15.751542+13:00"
-latest_revision_created_at: "2019-10-09T10:50:15.716169+13:00"
+first_published_at: '2019-10-09T10:50:15.751542+13:00'
+latest_revision_created_at: '2019-10-09T10:50:15.716169+13:00'
 site_url: https://www.stichtingadministratiekantoortkh.com
 ---
 

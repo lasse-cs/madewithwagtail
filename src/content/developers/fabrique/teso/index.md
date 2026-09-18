@@ -1,7 +1,7 @@
 ---
 title: TESO ferry service
-first_published_at: "2019-04-03T00:35:21.031065+13:00"
-latest_revision_created_at: "2019-04-03T00:36:51.453492+13:00"
+first_published_at: '2019-04-03T00:35:21.031065+13:00'
+latest_revision_created_at: '2019-04-03T00:36:51.453492+13:00'
 site_url: https://www.teso.nl/en/
 sector:
   - travel

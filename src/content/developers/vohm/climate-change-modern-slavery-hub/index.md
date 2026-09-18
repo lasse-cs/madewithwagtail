@@ -1,7 +1,7 @@
 ---
 title: Climate Change & Modern Slavery Hub
-first_published_at: "2025-10-07T13:24:53.967310+00:00"
-latest_revision_created_at: "2025-10-07T13:24:53.967310+00:00"
+first_published_at: '2025-10-07T13:24:53.967310+00:00'
+latest_revision_created_at: '2025-10-07T13:24:53.967310+00:00'
 site_url: https://www.climate-modern-slavery-hub.org
 sector:
   - non-profit

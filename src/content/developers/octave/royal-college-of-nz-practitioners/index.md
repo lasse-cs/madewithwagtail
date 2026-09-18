@@ -1,14 +1,13 @@
 ---
 title: Royal College of NZ Practitioners
-first_published_at: "2023-11-28T03:35:41.527600+00:00"
-latest_revision_created_at: "2023-11-28T03:35:41.527600+00:00"
+first_published_at: '2023-11-28T03:35:41.527600+00:00'
+latest_revision_created_at: '2023-11-28T03:35:41.527600+00:00'
 site_url: https://www.rnzcgp.org.nz/
 sector:
   - healthcare
 ---
 
 The Royal NZ College of GP’s aim is to improve health outcomes and reduce health inequities for all people in Aotearoa. One of the ways it does this is by maintaining education and quality standards for its members (GPs and rural hospital doctors) across the country.
-
 
 The Royal New Zealand College of GPs partnered with Octave to develop Te Whanake, a new digital product that delivers a professional development programme and enables members to stay on top of the developments and changing demands of the industry.
 

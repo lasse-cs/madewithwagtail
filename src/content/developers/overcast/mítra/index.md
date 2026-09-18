@@ -1,7 +1,7 @@
 ---
 title: Mítra
-first_published_at: "2024-08-07T02:54:17.777901+12:00"
-latest_revision_created_at: "2024-08-07T02:54:17.645862+12:00"
+first_published_at: '2024-08-07T02:54:17.777901+12:00'
+latest_revision_created_at: '2024-08-07T02:54:17.645862+12:00'
 site_url: https://mitra.is/
 sector:
   - industry

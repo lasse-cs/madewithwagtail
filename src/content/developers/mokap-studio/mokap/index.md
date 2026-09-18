@@ -1,7 +1,7 @@
 ---
 title: Mokap
-first_published_at: "2022-09-23T10:30:15.939033+00:00"
-latest_revision_created_at: "2022-09-23T10:30:15.939033+00:00"
+first_published_at: '2022-09-23T10:30:15.939033+00:00'
+latest_revision_created_at: '2022-09-23T10:30:15.939033+00:00'
 site_url: https://www.mokap.studio/
 ---
 

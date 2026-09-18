@@ -1,7 +1,7 @@
 ---
 title: Mozilla Donate
-first_published_at: "2022-01-13T22:49:13.091259+13:00"
-latest_revision_created_at: "2022-01-13T23:02:14.578066+13:00"
+first_published_at: '2022-01-13T22:49:13.091259+13:00'
+latest_revision_created_at: '2022-01-13T23:02:14.578066+13:00'
 site_url: https://donate.mozilla.org/en-GB/
 sector:
   - non-profit

@@ -1,12 +1,12 @@
 ---
 title: Computest
-first_published_at: "2021-12-04T11:50:46.835693+13:00"
-latest_revision_created_at: "2021-12-04T11:50:46.777480+13:00"
+first_published_at: '2021-12-04T11:50:46.835693+13:00'
+latest_revision_created_at: '2026-09-18T21:48:20.497693+00:00'
 location: Zoetermeer, The Netherlands
-lat: "52.035440"
-lon: "4.496820"
+lat: '52.035440'
+lon: '4.496820'
 company_url: https://www.computest.nl
-twitter_handler: "@computest"
+twitter_handler: '@computest'
 github_user: computestdev
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Zumtobel Group
-first_published_at: "2020-06-26T01:14:11.925451+12:00"
-latest_revision_created_at: "2024-09-17T03:00:34.291174+12:00"
+first_published_at: '2020-06-26T01:14:11.925451+12:00'
+latest_revision_created_at: '2024-09-17T03:00:34.291174+12:00'
 site_url: https://z.lighting/
 ---
 

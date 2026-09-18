@@ -1,7 +1,7 @@
 ---
 title: The Grizzly Paw Pub & Brewing Co.
-first_published_at: "2018-06-29T16:21:10.645077+12:00"
-latest_revision_created_at: "2018-06-29T16:21:10.601167+12:00"
+first_published_at: '2018-06-29T16:21:10.645077+12:00'
+latest_revision_created_at: '2018-06-29T16:21:10.601167+12:00'
 site_url: https://www.thegrizzlypaw.com/
 sector:
   - food

@@ -1,7 +1,7 @@
 ---
 title: Concamex
-first_published_at: "2020-04-24T15:45:26.506350+12:00"
-latest_revision_created_at: "2020-04-24T15:45:26.426958+12:00"
+first_published_at: '2020-04-24T15:45:26.506350+12:00'
+latest_revision_created_at: '2020-04-24T15:45:26.426958+12:00'
 site_url: https://www.concamex.coop
 sector:
   - non-profit

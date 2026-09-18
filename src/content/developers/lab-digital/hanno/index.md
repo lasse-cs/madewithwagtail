@@ -1,7 +1,7 @@
 ---
 title: Hanno
-first_published_at: "2019-09-23T11:39:54.882284+12:00"
-latest_revision_created_at: "2019-09-23T11:39:54.845366+12:00"
+first_published_at: '2019-09-23T11:39:54.882284+12:00'
+latest_revision_created_at: '2019-09-23T11:39:54.845366+12:00'
 site_url: https://www.hanno.nl/
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Mena higher education
-first_published_at: "2024-12-05T09:52:48.989789+00:00"
-latest_revision_created_at: "2024-12-05T09:52:48.989789+00:00"
+first_published_at: '2024-12-05T09:52:48.989789+00:00'
+latest_revision_created_at: '2024-12-05T09:52:48.989789+00:00'
 site_url: https://mena.edu.sa/ar/
 sector:
   - education

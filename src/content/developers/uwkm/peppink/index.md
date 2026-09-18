@@ -1,7 +1,7 @@
 ---
 title: Peppink
-first_published_at: "2022-01-08T13:59:33.618696+13:00"
-latest_revision_created_at: "2022-01-08T13:59:33.558061+13:00"
+first_published_at: '2022-01-08T13:59:33.618696+13:00'
+latest_revision_created_at: '2022-01-08T13:59:33.558061+13:00'
 site_url: https://peppink.com
 ---
 

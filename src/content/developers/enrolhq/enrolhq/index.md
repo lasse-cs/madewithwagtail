@@ -1,7 +1,7 @@
 ---
 title: EnrolHQ
-first_published_at: "2019-09-23T11:01:39.845348+12:00"
-latest_revision_created_at: "2019-09-23T11:02:44.776994+12:00"
+first_published_at: '2019-09-23T11:01:39.845348+12:00'
+latest_revision_created_at: '2019-09-23T11:02:44.776994+12:00'
 site_url: https://www.enrolhq.cc/
 sector:
   - professional services

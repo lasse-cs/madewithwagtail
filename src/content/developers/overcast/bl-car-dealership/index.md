@@ -1,7 +1,7 @@
 ---
 title: BL car dealership
-first_published_at: "2025-03-13T06:09:38.752318+13:00"
-latest_revision_created_at: "2025-03-13T06:09:38.655529+13:00"
+first_published_at: '2025-03-13T06:09:38.752318+13:00'
+latest_revision_created_at: '2025-03-13T06:09:38.655529+13:00'
 site_url: https://www.bl.is
 sector:
   - industry

@@ -1,7 +1,7 @@
 ---
 title: Venture Beyond
-first_published_at: "2016-09-01T08:50:48.759366+12:00"
-latest_revision_created_at: "2016-09-01T08:50:48.717070+12:00"
+first_published_at: '2016-09-01T08:50:48.759366+12:00'
+latest_revision_created_at: '2016-09-01T08:50:48.717070+12:00'
 site_url: https://www.venturebeyond.ca/
 sector:
   - travel

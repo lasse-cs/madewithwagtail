@@ -1,7 +1,7 @@
 ---
 title: JWN Energy
-first_published_at: "2016-09-01T08:21:50.324802+12:00"
-latest_revision_created_at: "2016-09-01T08:21:50.265946+12:00"
+first_published_at: '2016-09-01T08:21:50.324802+12:00'
+latest_revision_created_at: '2016-09-01T08:21:50.265946+12:00'
 site_url: https://www.dobenergy.com/news/
 sector:
   - technology

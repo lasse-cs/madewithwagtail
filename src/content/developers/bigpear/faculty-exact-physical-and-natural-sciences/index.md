@@ -1,7 +1,7 @@
 ---
 title: Faculty of Exact, Physical and Natural Sciences
-first_published_at: "2021-10-13T16:55:09.504225+13:00"
-latest_revision_created_at: "2021-10-13T16:55:09.408153+13:00"
+first_published_at: '2021-10-13T16:55:09.504225+13:00'
+latest_revision_created_at: '2021-10-13T16:55:09.408153+13:00'
 site_url: https://fcefyn.unc.edu.ar/
 sector:
   - education

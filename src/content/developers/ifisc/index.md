@@ -1,9 +1,9 @@
 ---
 title: IFISC
-first_published_at: "2019-09-23T11:32:08.261921+12:00"
-latest_revision_created_at: "2019-09-23T11:32:08.232734+12:00"
-lat: "48.286002"
-lon: "25.939133"
+first_published_at: '2019-09-23T11:32:08.261921+12:00'
+latest_revision_created_at: '2019-09-23T11:32:08.232734+12:00'
+lat: '48.286002'
+lon: '25.939133'
 twitter_handler: '@ifisc_mallorca'
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Sylvia Ioannou Foundation
-first_published_at: "2021-12-08T15:40:31.552947+13:00"
-latest_revision_created_at: "2021-12-08T15:40:31.449255+13:00"
+first_published_at: '2021-12-08T15:40:31.552947+13:00'
+latest_revision_created_at: '2021-12-08T15:40:31.449255+13:00'
 site_url: https://sylviaioannoufoundation.org/en/
 sector:
   - culture

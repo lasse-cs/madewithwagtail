@@ -1,7 +1,7 @@
 ---
 title: Sarah Kügel
-first_published_at: "2017-11-06T09:29:19.767839+13:00"
-latest_revision_created_at: "2017-12-05T11:17:19.748967+13:00"
+first_published_at: '2017-11-06T09:29:19.767839+13:00'
+latest_revision_created_at: '2017-12-05T11:17:19.748967+13:00'
 site_url: https://sarahkugel.com
 site_type:
   - portfolio

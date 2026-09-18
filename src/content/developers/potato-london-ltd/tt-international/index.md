@@ -1,7 +1,7 @@
 ---
 title: TT International
-first_published_at: "2017-07-18T15:20:44.386531+12:00"
-latest_revision_created_at: "2018-01-16T16:58:05.567556+13:00"
+first_published_at: '2017-07-18T15:20:44.386531+12:00'
+latest_revision_created_at: '2018-01-16T16:58:05.567556+13:00'
 site_url: https://www.ttint.com/
 sector:
   - finance

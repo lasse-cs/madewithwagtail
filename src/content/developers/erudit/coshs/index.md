@@ -1,7 +1,7 @@
 ---
 title: CO.SHS
-first_published_at: "2019-09-19T18:49:29.515243+12:00"
-latest_revision_created_at: "2019-09-19T18:49:29.474420+12:00"
+first_published_at: '2019-09-19T18:49:29.515243+12:00'
+latest_revision_created_at: '2019-09-19T18:49:29.474420+12:00'
 site_url: https://co-shs.ca/en/
 sector:
   - research

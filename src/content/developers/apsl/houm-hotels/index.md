@@ -1,7 +1,7 @@
 ---
 title: Houm Hotels
-first_published_at: "2017-01-16T15:21:39.287118+13:00"
-latest_revision_created_at: "2017-01-16T15:23:57.154319+13:00"
+first_published_at: '2017-01-16T15:21:39.287118+13:00'
+latest_revision_created_at: '2017-01-16T15:23:57.154319+13:00'
 site_url: https://www.houmhotels.com
 ---
 

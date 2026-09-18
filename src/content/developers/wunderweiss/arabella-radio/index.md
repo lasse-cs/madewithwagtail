@@ -1,7 +1,7 @@
 ---
 title: Arabella Radio
-first_published_at: "2022-10-18T08:36:58.729716+00:00"
-latest_revision_created_at: "2022-10-18T08:36:58.729716+00:00"
+first_published_at: '2022-10-18T08:36:58.729716+00:00'
+latest_revision_created_at: '2022-10-18T08:36:58.729716+00:00'
 site_url: https://www.arabella.at/at/
 sector:
   - arts

@@ -1,7 +1,7 @@
 ---
 title: TOP Radiovermarktung
-first_published_at: "2022-10-18T08:46:55.295743+00:00"
-latest_revision_created_at: "2022-10-18T08:46:55.295743+00:00"
+first_published_at: '2022-10-18T08:46:55.295743+00:00'
+latest_revision_created_at: '2022-10-18T08:46:55.295743+00:00'
 site_url: https://www.topradio.de
 sector:
   - professional services

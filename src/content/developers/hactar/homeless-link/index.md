@@ -1,7 +1,7 @@
 ---
 title: Homeless Link
-first_published_at: "2026-07-14T09:47:03.091602+00:00"
-latest_revision_created_at: "2026-07-14T09:47:03.091602+00:00"
+first_published_at: '2026-07-14T09:47:03.091602+00:00'
+latest_revision_created_at: '2026-07-14T09:47:03.091602+00:00'
 site_url: https://homeless.org.uk
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Esmée Fairbairn Foundation
-first_published_at: "2022-06-15T13:35:06.701325+00:00"
-latest_revision_created_at: "2022-06-15T13:35:06.701325+00:00"
+first_published_at: '2022-06-15T13:35:06.701325+00:00'
+latest_revision_created_at: '2022-06-15T13:35:06.701325+00:00'
 site_url: https://esmeefairbairn.org.uk
 sector:
   - non-profit

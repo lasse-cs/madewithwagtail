@@ -1,7 +1,7 @@
 ---
 title: Letchworth Garden City Heritage Foundation
-first_published_at: "2025-10-07T13:30:12.861409+00:00"
-latest_revision_created_at: "2025-10-07T13:30:12.861409+00:00"
+first_published_at: '2025-10-07T13:30:12.861409+00:00'
+latest_revision_created_at: '2025-10-07T13:30:12.861409+00:00'
 site_url: https://www.letchworth.com
 sector:
   - government

@@ -1,7 +1,7 @@
 ---
 title: Biblioteca Digital de Bogotá
-first_published_at: "2021-12-12T04:32:05.814829+13:00"
-latest_revision_created_at: "2021-12-12T04:32:05.726719+13:00"
+first_published_at: '2021-12-12T04:32:05.814829+13:00'
+latest_revision_created_at: '2021-12-12T04:32:05.726719+13:00'
 site_url: https://www.bibliotecadigitaldebogota.gov.co/
 sector:
   - education

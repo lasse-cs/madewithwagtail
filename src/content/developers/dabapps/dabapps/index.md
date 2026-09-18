@@ -1,7 +1,7 @@
 ---
 title: DabApps
-first_published_at: "2018-06-22T17:47:38.316816+12:00"
-latest_revision_created_at: "2018-06-22T17:47:38.270273+12:00"
+first_published_at: '2018-06-22T17:47:38.316816+12:00'
+latest_revision_created_at: '2018-06-22T17:47:38.270273+12:00'
 site_url: https://www.dabapps.com
 site_type:
   - portfolio

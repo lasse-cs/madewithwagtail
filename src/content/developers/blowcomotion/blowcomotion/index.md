@@ -1,7 +1,7 @@
 ---
 title: Blowcomotion
-first_published_at: "2026-02-10T21:36:40.151174+00:00"
-latest_revision_created_at: "2026-02-10T21:36:40.151174+00:00"
+first_published_at: '2026-02-10T21:36:40.151174+00:00'
+latest_revision_created_at: '2026-02-10T21:36:40.151174+00:00'
 site_url: https://www.blowcomotion.org/
 sector:
   - arts

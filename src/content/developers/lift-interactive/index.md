@@ -1,12 +1,12 @@
 ---
 title: Lift Interactive
-first_published_at: "2015-10-12T09:51:14.903343+13:00"
-latest_revision_created_at: "2018-03-08T11:26:35.615385+13:00"
+first_published_at: '2015-10-12T09:51:14.903343+13:00'
+latest_revision_created_at: '2026-09-18T21:51:47.589427+00:00'
 location: Edmonton, Canada
-lat: "53.5168869"
-lon: "-113.49288899999999"
+lat: '53.5168869'
+lon: '-113.49288899999999'
 company_url: https://liftinteractive.com/
-twitter_handler: "@liftinteractive"
+twitter_handler: '@liftinteractive'
 github_user: l1f7
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: Potato
-first_published_at: "2017-07-18T12:31:59.964825+12:00"
-latest_revision_created_at: "2020-05-18T09:50:59.043539+12:00"
+first_published_at: '2017-07-18T12:31:59.964825+12:00'
+latest_revision_created_at: '2026-09-18T21:53:36.976616+00:00'
 location: London, UK
-lat: "51.5223287"
-lon: "-0.13633340000001226"
+lat: '51.5223287'
+lon: '-0.13633340000001226'
 company_url: https://p.ota.to/
-twitter_handler: "@PotatoStudios_"
+twitter_handler: '@PotatoStudios_'
 github_user: potatolondon
 ---
 

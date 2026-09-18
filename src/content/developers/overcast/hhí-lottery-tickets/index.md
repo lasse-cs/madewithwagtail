@@ -1,7 +1,7 @@
 ---
 title: HHÍ lottery tickets
-first_published_at: "2022-01-18T05:11:59.168686+13:00"
-latest_revision_created_at: "2022-01-18T05:11:59.097151+13:00"
+first_published_at: '2022-01-18T05:11:59.168686+13:00'
+latest_revision_created_at: '2022-01-18T05:11:59.097151+13:00'
 site_url: https://www.hhi.is/
 sector:
   - government

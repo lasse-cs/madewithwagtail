@@ -1,7 +1,7 @@
 ---
 title: Campus West
-first_published_at: "2021-07-07T15:25:31.483766+12:00"
-latest_revision_created_at: "2021-07-07T15:25:31.402683+12:00"
+first_published_at: '2021-07-07T15:25:31.483766+12:00'
+latest_revision_created_at: '2021-07-07T15:25:31.402683+12:00'
 site_url: https://www.campuswest.co.uk
 sector:
   - culture

@@ -1,7 +1,7 @@
 ---
 title: Sawridge Inns
-first_published_at: "2016-09-01T08:20:37.178767+12:00"
-latest_revision_created_at: "2016-09-01T08:20:37.096471+12:00"
+first_published_at: '2016-09-01T08:20:37.178767+12:00'
+latest_revision_created_at: '2016-09-01T08:20:37.096471+12:00'
 site_url: https://www.sawridge.com/
 sector:
   - hospitality

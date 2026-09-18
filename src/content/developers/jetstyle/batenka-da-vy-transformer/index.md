@@ -1,7 +1,7 @@
 ---
 title: Батенька, да вы трансформер!  My friend, you are a transformer!
-first_published_at: "2017-07-21T11:39:15.653852+12:00"
-latest_revision_created_at: "2017-09-11T10:42:05.832744+12:00"
+first_published_at: '2017-07-21T11:39:15.653852+12:00'
+latest_revision_created_at: '2017-09-11T10:42:05.832744+12:00'
 site_url: https://batenka.ru/
 site_type:
   - news

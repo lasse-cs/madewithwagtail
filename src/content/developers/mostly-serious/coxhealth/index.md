@@ -1,7 +1,7 @@
 ---
 title: CoxHealth
-first_published_at: "2017-03-14T04:47:03.058167+13:00"
-latest_revision_created_at: "2021-12-08T20:15:30.356007+13:00"
+first_published_at: '2017-03-14T04:47:03.058167+13:00'
+latest_revision_created_at: '2021-12-08T20:15:30.356007+13:00'
 site_url: https://www.coxhealth.com/
 sector:
   - healthcare

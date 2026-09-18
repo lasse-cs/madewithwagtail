@@ -1,7 +1,7 @@
 ---
 title: wunderweiss – design & technology
-first_published_at: "2022-10-18T08:32:24.595476+00:00"
-latest_revision_created_at: "2022-10-18T08:32:24.595476+00:00"
+first_published_at: '2022-10-18T08:32:24.595476+00:00'
+latest_revision_created_at: '2022-10-18T08:32:24.595476+00:00'
 site_url: https://www.wunderweiss.com/en/
 sector:
   - technology

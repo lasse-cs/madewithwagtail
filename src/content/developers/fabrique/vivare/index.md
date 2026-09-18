@@ -1,7 +1,7 @@
 ---
 title: Vivare
-first_published_at: "2018-07-13T23:10:49.165713+12:00"
-latest_revision_created_at: "2018-07-13T23:10:49.093999+12:00"
+first_published_at: '2018-07-13T23:10:49.165713+12:00'
+latest_revision_created_at: '2018-07-13T23:10:49.093999+12:00'
 site_url: https://www.vivare.nl/
 in_cooperation_with_slug: four-digits
 sector:

@@ -1,7 +1,7 @@
 ---
 title: Sight Concern Bedfordshire
-first_published_at: "2024-12-09T20:54:51.474174+00:00"
-latest_revision_created_at: "2024-12-09T20:54:51.474174+00:00"
+first_published_at: '2024-12-09T20:54:51.474174+00:00'
+latest_revision_created_at: '2024-12-09T20:54:51.474174+00:00'
 site_url: https://www.sightconcern.org.uk/
 sector:
   - non-profit

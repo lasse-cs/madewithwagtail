@@ -1,7 +1,7 @@
 ---
 title: Girl Effect
-first_published_at: "2018-03-09T16:50:05.982939+13:00"
-latest_revision_created_at: "2018-03-09T16:50:05.946690+13:00"
+first_published_at: '2018-03-09T16:50:05.982939+13:00'
+latest_revision_created_at: '2018-03-09T16:50:05.946690+13:00'
 site_url: https://www.girleffect.org/
 sector:
   - non-profit

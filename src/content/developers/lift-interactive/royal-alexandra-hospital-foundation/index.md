@@ -1,7 +1,7 @@
 ---
 title: Royal Alexandra Hospital Foundation
-first_published_at: "2016-09-01T08:46:42.234235+12:00"
-latest_revision_created_at: "2016-09-01T08:46:42.189233+12:00"
+first_published_at: '2016-09-01T08:46:42.234235+12:00'
+latest_revision_created_at: '2016-09-01T08:46:42.189233+12:00'
 site_url: https://www.royalalex.org/
 sector:
   - healthcare

@@ -1,7 +1,7 @@
 ---
 title: Cotswold Holidays
-first_published_at: "2017-11-22T11:39:17.079412+13:00"
-latest_revision_created_at: "2017-11-22T11:39:16.913434+13:00"
+first_published_at: '2017-11-22T11:39:17.079412+13:00'
+latest_revision_created_at: '2017-11-22T11:39:16.913434+13:00'
 site_url: https://www.cotswoldholidays.co.uk/
 sector:
   - travel

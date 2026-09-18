@@ -1,7 +1,7 @@
 ---
 title: Black Line Studios
-first_published_at: "2019-09-23T12:01:16.047587+12:00"
-latest_revision_created_at: "2019-09-23T12:01:16.002359+12:00"
+first_published_at: '2019-09-23T12:01:16.047587+12:00'
+latest_revision_created_at: '2019-09-23T12:01:16.002359+12:00'
 site_url: https://blacklinestudios.ca/
 sector:
   - arts

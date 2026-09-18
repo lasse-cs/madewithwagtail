@@ -1,7 +1,7 @@
 ---
 title: Citizens UK
-first_published_at: "2026-03-26T11:34:29.416535+00:00"
-latest_revision_created_at: "2026-03-26T11:34:29.416535+00:00"
+first_published_at: '2026-03-26T11:34:29.416535+00:00'
+latest_revision_created_at: '2026-03-26T11:34:29.416535+00:00'
 site_url: https://www.citizensuk.org
 sector:
   - non-profit

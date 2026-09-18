@@ -1,7 +1,7 @@
 ---
 title: Novonor
-first_published_at: "2022-04-27T14:03:37.191490+00:00"
-latest_revision_created_at: "2022-04-27T14:03:37.191490+00:00"
+first_published_at: '2022-04-27T14:03:37.191490+00:00'
+latest_revision_created_at: '2022-04-27T14:03:37.191490+00:00'
 site_url: https://www.novonor.com
 ---
 

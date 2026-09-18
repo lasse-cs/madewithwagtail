@@ -1,7 +1,7 @@
 ---
 title: Wagtail Space
-first_published_at: "2016-11-19T00:34:49.425194+13:00"
-latest_revision_created_at: "2018-01-16T16:56:12.549573+13:00"
+first_published_at: '2016-11-19T00:34:49.425194+13:00'
+latest_revision_created_at: '2018-01-16T16:56:12.549573+13:00'
 site_url: https://www.wagtail.space/
 ---
 

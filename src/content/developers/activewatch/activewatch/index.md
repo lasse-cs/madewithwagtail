@@ -1,7 +1,7 @@
 ---
 title: ActiveWatch
-first_published_at: "2023-06-19T15:07:20.421220+00:00"
-latest_revision_created_at: "2023-06-19T15:07:20.421220+00:00"
+first_published_at: '2023-06-19T15:07:20.421220+00:00'
+latest_revision_created_at: '2023-06-19T15:07:20.421220+00:00'
 site_url: https://activewatch.ro/
 sector:
   - non-profit

@@ -1,7 +1,7 @@
 ---
 title: Rijkswaterstaat Verkeersinformatie
-first_published_at: "2022-10-14T20:41:36.347133+13:00"
-latest_revision_created_at: "2022-10-14T20:41:36.293168+13:00"
+first_published_at: '2022-10-14T20:41:36.347133+13:00'
+latest_revision_created_at: '2022-10-14T20:41:36.293168+13:00'
 site_url: https://www.rwsverkeersinfo.nl/
 ---
 

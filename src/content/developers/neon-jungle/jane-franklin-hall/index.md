@@ -1,7 +1,7 @@
 ---
 title: Jane Franklin Hall
-first_published_at: "2019-10-23T14:17:12.253323+13:00"
-latest_revision_created_at: "2019-10-23T14:17:12.113105+13:00"
+first_published_at: '2019-10-23T14:17:12.253323+13:00'
+latest_revision_created_at: '2019-10-23T14:17:12.113105+13:00'
 site_url: https://jane.edu.au
 sector:
   - education

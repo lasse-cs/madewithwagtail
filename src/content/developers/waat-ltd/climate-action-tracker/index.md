@@ -1,7 +1,7 @@
 ---
 title: Climate Action Tracker
-first_published_at: "2018-05-28T16:10:53.308942+12:00"
-latest_revision_created_at: "2018-05-28T16:10:53.271832+12:00"
+first_published_at: '2018-05-28T16:10:53.308942+12:00'
+latest_revision_created_at: '2018-05-28T16:10:53.271832+12:00'
 site_url: https://climateactiontracker.org
 sector:
   - climate

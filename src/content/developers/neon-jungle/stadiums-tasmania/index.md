@@ -1,7 +1,7 @@
 ---
 title: Stadiums Tasmania
-first_published_at: "2026-01-13T13:24:09.472711+13:00"
-latest_revision_created_at: "2026-01-13T13:24:09.363079+13:00"
+first_published_at: '2026-01-13T13:24:09.472711+13:00'
+latest_revision_created_at: '2026-01-13T13:24:09.363079+13:00'
 site_url: https://stadiumstasmania.com.au/
 ---
 

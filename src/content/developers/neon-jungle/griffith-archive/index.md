@@ -1,7 +1,7 @@
 ---
 title: Griffith Archive
-first_published_at: "2017-03-14T05:00:30.788071+13:00"
-latest_revision_created_at: "2018-02-07T18:01:51.339181+13:00"
+first_published_at: '2017-03-14T05:00:30.788071+13:00'
+latest_revision_created_at: '2018-02-07T18:01:51.339181+13:00'
 site_url: https://griffitharchive.griffith.edu.au/
 sector:
   - arts

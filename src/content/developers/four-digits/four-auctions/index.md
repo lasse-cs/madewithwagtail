@@ -1,7 +1,7 @@
 ---
 title: Four Auctions
-first_published_at: "2021-08-26T00:39:52.943006+12:00"
-latest_revision_created_at: "2022-10-14T20:49:09.473136+13:00"
+first_published_at: '2021-08-26T00:39:52.943006+12:00'
+latest_revision_created_at: '2022-10-14T20:49:09.473136+13:00'
 site_url: https://www.fourauctions.nl
 ---
 

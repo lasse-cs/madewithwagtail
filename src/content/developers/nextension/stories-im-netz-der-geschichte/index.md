@@ -1,7 +1,7 @@
 ---
 title: Stories - im Netz der Geschichte
-first_published_at: "2025-07-11T12:45:41.551611+00:00"
-latest_revision_created_at: "2025-07-11T12:45:41.551611+00:00"
+first_published_at: '2025-07-11T12:45:41.551611+00:00'
+latest_revision_created_at: '2025-07-11T12:45:41.551611+00:00'
 site_url: https://stories.nationalmuseum.ch/
 sector:
   - culture

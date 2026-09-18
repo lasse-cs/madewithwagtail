@@ -1,7 +1,7 @@
 ---
 title: Amelie Stewart
-first_published_at: "2020-01-10T12:28:45.677265+13:00"
-latest_revision_created_at: "2020-01-10T12:33:17.976644+13:00"
+first_published_at: '2020-01-10T12:28:45.677265+13:00'
+latest_revision_created_at: '2026-09-18T21:35:45.486056+00:00'
 location: Boston, MA
 company_url: https://indigoastro.com/
 ---

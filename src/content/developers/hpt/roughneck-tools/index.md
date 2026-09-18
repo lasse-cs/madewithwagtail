@@ -1,7 +1,7 @@
 ---
 title: Roughneck Tools
-first_published_at: "2022-01-20T23:58:04.386600+13:00"
-latest_revision_created_at: "2022-01-20T23:58:04.333233+13:00"
+first_published_at: '2022-01-20T23:58:04.386600+13:00'
+latest_revision_created_at: '2022-01-20T23:58:04.333233+13:00'
 site_url: https://roughneck-tools.com/en/
 ---
 

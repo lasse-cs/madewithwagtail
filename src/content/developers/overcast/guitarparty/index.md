@@ -1,7 +1,7 @@
 ---
 title: GuitarParty
-first_published_at: "2022-01-18T20:14:21.370712+13:00"
-latest_revision_created_at: "2022-01-18T20:14:21.249598+13:00"
+first_published_at: '2022-01-18T20:14:21.370712+13:00'
+latest_revision_created_at: '2022-01-18T20:14:21.249598+13:00'
 site_url: https://www.guitarparty.com/
 sector:
   - arts

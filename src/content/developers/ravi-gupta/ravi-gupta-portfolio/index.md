@@ -1,7 +1,7 @@
 ---
 title: Ravi Gupta | Portfolio
-first_published_at: "2026-04-07T02:58:38.874856+00:00"
-latest_revision_created_at: "2026-04-07T02:58:38.874856+00:00"
+first_published_at: '2026-04-07T02:58:38.874856+00:00'
+latest_revision_created_at: '2026-04-07T02:58:38.874856+00:00'
 site_url: https://ravigupta.design/
 ---
 

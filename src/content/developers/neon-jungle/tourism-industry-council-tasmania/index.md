@@ -1,7 +1,7 @@
 ---
 title: Tourism Industry Council Tasmania
-first_published_at: "2017-03-14T05:13:25.722114+13:00"
-latest_revision_created_at: "2017-03-14T05:13:25.649744+13:00"
+first_published_at: '2017-03-14T05:13:25.722114+13:00'
+latest_revision_created_at: '2017-03-14T05:13:25.649744+13:00'
 site_url: https://tict.com.au/
 sector:
   - government

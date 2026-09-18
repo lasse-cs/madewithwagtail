@@ -1,7 +1,7 @@
 ---
 title: Open Ownership
-first_published_at: "2022-06-15T13:09:48.475563+00:00"
-latest_revision_created_at: "2022-06-15T13:09:48.475563+00:00"
+first_published_at: '2022-06-15T13:09:48.475563+00:00'
+latest_revision_created_at: '2022-06-15T13:09:48.475563+00:00'
 site_url: https://www.openownership.org/en/
 sector:
   - non-profit

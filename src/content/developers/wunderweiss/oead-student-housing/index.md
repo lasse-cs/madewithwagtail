@@ -1,7 +1,7 @@
 ---
 title: OeAD student housing
-first_published_at: "2022-10-18T08:43:05.704701+00:00"
-latest_revision_created_at: "2022-10-18T08:43:05.704701+00:00"
+first_published_at: '2022-10-18T08:43:05.704701+00:00'
+latest_revision_created_at: '2022-10-18T08:43:05.704701+00:00'
 site_url: https://www.oeadstudenthousing.at/en/
 sector:
   - education

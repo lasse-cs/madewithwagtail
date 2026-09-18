@@ -1,12 +1,12 @@
 ---
 title: NoriPyt
-first_published_at: "2015-07-17T10:55:55.023759+12:00"
-latest_revision_created_at: "2018-07-28T02:27:16.535124+12:00"
+first_published_at: '2015-07-17T10:55:55.023759+12:00'
+latest_revision_created_at: '2026-09-18T21:53:03.845825+00:00'
 location: Rouen, France
-lat: "49.4285905"
-lon: "1.0656704000000445"
+lat: '49.4285905'
+lon: '1.0656704000000445'
 company_url: https://noripyt.com
-twitter_handler: "@NoriPytCom"
+twitter_handler: '@NoriPytCom'
 github_user: noripyt
 ---
 

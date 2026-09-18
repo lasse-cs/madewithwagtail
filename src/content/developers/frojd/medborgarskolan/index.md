@@ -1,7 +1,7 @@
 ---
 title: Medborgarskolan
-first_published_at: "2022-01-27T14:28:47.079093+00:00"
-latest_revision_created_at: "2022-01-27T14:28:47.079093+00:00"
+first_published_at: '2022-01-27T14:28:47.079093+00:00'
+latest_revision_created_at: '2022-01-27T14:28:47.079093+00:00'
 site_url: https://www.medborgarskolan.se/
 sector:
   - education

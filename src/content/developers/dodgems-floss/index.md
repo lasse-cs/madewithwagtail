@@ -1,12 +1,15 @@
 ---
 title: Dodgems & Floss
-first_published_at: "2021-12-08T15:29:42.462617+13:00"
-latest_revision_created_at: "2025-02-04T03:50:43.804082+13:00"
+first_published_at: '2021-12-08T15:29:42.462617+13:00'
+latest_revision_created_at: '2026-09-18T21:49:03.207687+00:00'
 location: Canterbury, UK
-lat: "51.2809062"
-lon: "1.0770378"
+lat: '51.2809062'
+lon: '1.0770378'
 company_url: https://dodgemsandfloss.com/
 github_user: Dodgems-and-Floss
+online_profiles:
+  - https://www.linkedin.com/company/dodgemsandfloss/
+  - https://www.instagram.com/dodgemsandfloss/
 ---
 
 **At Dodgems and Floss, we create and evolve brands, design and build for the web, and provide marketing and motion services for clients across the globe.**

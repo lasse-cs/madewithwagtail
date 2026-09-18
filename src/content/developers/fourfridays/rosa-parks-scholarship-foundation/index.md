@@ -1,7 +1,7 @@
 ---
 title: Rosa Parks Scholarship Foundation
-first_published_at: "2025-03-31T22:04:48.654404+00:00"
-latest_revision_created_at: "2025-03-31T22:04:48.654404+00:00"
+first_published_at: '2025-03-31T22:04:48.654404+00:00'
+latest_revision_created_at: '2025-03-31T22:04:48.654404+00:00'
 site_url: https://rosaparksscholarship.org/
 sector:
   - non-profit

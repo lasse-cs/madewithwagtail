@@ -1,7 +1,7 @@
 ---
 title: Allianz Iceland
-first_published_at: "2022-01-18T05:13:52.671352+13:00"
-latest_revision_created_at: "2022-01-18T05:13:52.602329+13:00"
+first_published_at: '2022-01-18T05:13:52.671352+13:00'
+latest_revision_created_at: '2022-01-18T05:13:52.602329+13:00'
 site_url: https://www.allianz.is/
 sector:
   - finance

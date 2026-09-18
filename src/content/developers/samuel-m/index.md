@@ -1,8 +1,0 @@
----
-title: Samuel M
-first_published_at: "2019-12-04T18:00:40.414384+13:00"
-latest_revision_created_at: "2019-12-04T18:00:40.363889+13:00"
-location: Saint Cyr L'ecole, France
-company_url: https://www.meyn.fr
-github_user: olopost
----

@@ -1,7 +1,7 @@
 ---
 title: kronehit Radio
-first_published_at: "2022-10-18T08:40:12.058950+00:00"
-latest_revision_created_at: "2022-10-18T08:40:12.058950+00:00"
+first_published_at: '2022-10-18T08:40:12.058950+00:00'
+latest_revision_created_at: '2022-10-18T08:40:12.058950+00:00'
 site_url: https://www.kronehit.at
 sector:
   - arts

@@ -1,13 +1,17 @@
 ---
 title: Fabrique
-first_published_at: "2018-01-31T12:59:37.035997+13:00"
-latest_revision_created_at: "2018-01-31T12:59:36.960614+13:00"
+first_published_at: '2018-01-31T12:59:37.035997+13:00'
+latest_revision_created_at: '2026-09-18T21:49:41.349263+00:00'
 location: Delft, Amsterdam and Rotterdam, The Netherlands
-lat: "52.007136"
-lon: "4.367053"
+lat: '52.007136'
+lon: '4.367053'
 company_url: https://fabrique.com
-twitter_handler: "@fabrique"
+twitter_handler: '@fabrique'
 github_user: fabrique
+online_profiles:
+  - http://www.facebook.com/fabriquenl
+  - http://www.linkedin.com/company/fabrique
+  - http://twitter.com/fabrique
 ---
 
 We are a strategic design agency.

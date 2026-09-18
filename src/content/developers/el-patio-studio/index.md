@@ -1,9 +1,9 @@
 ---
 title: El Patio Studio
-first_published_at: "2019-09-23T10:26:24.058319+12:00"
-latest_revision_created_at: "2019-09-23T10:29:55.467328+12:00"
-lat: "47.493759"
-lon: "7.620300"
+first_published_at: '2019-09-23T10:26:24.058319+12:00'
+latest_revision_created_at: '2026-09-18T21:49:14.977897+00:00'
+lat: '47.493759'
+lon: '7.620300'
 company_url: https://www.elpatiostudio.com/
 github_user: elpatiostudio
 ---

@@ -1,7 +1,7 @@
 ---
 title: Tasmania Football Club
-first_published_at: "2026-01-13T12:42:23.742213+13:00"
-latest_revision_created_at: "2026-01-13T12:42:23.535143+13:00"
+first_published_at: '2026-01-13T12:42:23.742213+13:00'
+latest_revision_created_at: '2026-01-13T12:42:23.535143+13:00'
 site_url: https://www.devilsfc.com.au/
 sector:
   - sport

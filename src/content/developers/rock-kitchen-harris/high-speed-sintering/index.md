@@ -1,7 +1,7 @@
 ---
 title: High Speed Sintering
-first_published_at: "2017-07-13T13:53:10.636824+12:00"
-latest_revision_created_at: "2017-07-14T09:12:27.941667+12:00"
+first_published_at: '2017-07-13T13:53:10.636824+12:00'
+latest_revision_created_at: '2017-07-14T09:12:27.941667+12:00'
 site_url: https://www.highspeedsinteringtechnology.com/
 ---
 

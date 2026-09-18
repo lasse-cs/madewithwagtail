@@ -1,7 +1,7 @@
 ---
 title: Turngemeinde in Berlin 1848 e.V.
-first_published_at: "2021-12-10T11:34:09.094583+13:00"
-latest_revision_created_at: "2021-12-10T11:34:08.934704+13:00"
+first_published_at: '2021-12-10T11:34:09.094583+13:00'
+latest_revision_created_at: '2021-12-10T11:34:08.934704+13:00'
 site_url: https://www.tib1848ev.de/
 sector:
   - sport

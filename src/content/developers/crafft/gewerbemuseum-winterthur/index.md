@@ -1,7 +1,7 @@
 ---
 title: Gewerbemuseum Winterthur
-first_published_at: "2026-07-02T09:43:47.340357+00:00"
-latest_revision_created_at: "2026-07-02T09:43:47.340357+00:00"
+first_published_at: '2026-07-02T09:43:47.340357+00:00'
+latest_revision_created_at: '2026-07-02T09:43:47.340357+00:00'
 site_url: https://gewerbemuseum.ch/de/
 sector:
   - culture

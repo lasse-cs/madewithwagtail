@@ -1,7 +1,7 @@
 ---
 title: GS
-first_published_at: "2017-07-07T16:48:21.854953+12:00"
-latest_revision_created_at: "2017-07-10T11:58:38.299316+12:00"
+first_published_at: '2017-07-07T16:48:21.854953+12:00'
+latest_revision_created_at: '2017-07-10T11:58:38.299316+12:00'
 site_url: https://www.gsdesign.com
 ---
 

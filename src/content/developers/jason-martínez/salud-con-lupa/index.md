@@ -1,7 +1,7 @@
 ---
 title: Salud con lupa
-first_published_at: "2019-09-23T11:37:12.237787+12:00"
-latest_revision_created_at: "2019-09-23T11:37:12.195137+12:00"
+first_published_at: '2019-09-23T11:37:12.237787+12:00'
+latest_revision_created_at: '2019-09-23T11:37:12.195137+12:00'
 site_url: https://saludconlupa.com/
 sector:
   - healthcare

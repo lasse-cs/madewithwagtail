@@ -1,7 +1,7 @@
 ---
 title: Thomas Mann Letters
-first_published_at: "2025-07-11T12:28:12.281278+00:00"
-latest_revision_created_at: "2025-07-11T12:28:12.281278+00:00"
+first_published_at: '2025-07-11T12:28:12.281278+00:00'
+latest_revision_created_at: '2025-07-11T12:28:12.281278+00:00'
 site_url: https://briefe.tma.ethz.ch/en
 ---
 

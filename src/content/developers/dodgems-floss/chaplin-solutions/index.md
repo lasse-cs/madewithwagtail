@@ -1,7 +1,7 @@
 ---
 title: Chaplin Solutions
-first_published_at: "2025-02-04T04:57:29.296911+13:00"
-latest_revision_created_at: "2025-05-19T21:37:23.792277+12:00"
+first_published_at: '2025-02-04T04:57:29.296911+13:00'
+latest_revision_created_at: '2025-05-19T21:37:23.792277+12:00'
 site_url: https://chaplinsolutions.co.uk/
 sector:
   - technology

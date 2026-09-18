@@ -1,13 +1,16 @@
 ---
 title: Springload
-first_published_at: "2015-04-18T21:19:46.509051+12:00"
-latest_revision_created_at: "2019-09-25T10:18:03.191113+12:00"
+first_published_at: '2015-04-18T21:19:46.509051+12:00'
+latest_revision_created_at: '2026-09-18T21:55:20.556594+00:00'
 location: Wellington, NZ
-lat: "-41.29244389999999"
-lon: "174.77836619999994"
+lat: '-41.29244389999999'
+lon: '174.77836619999994'
 company_url: https://www.springload.co.nz/
-twitter_handler: "@springloadnz"
+twitter_handler: '@springloadnz'
 github_user: springload
+online_profiles:
+  - https://github.com/springload
+  - https://www.linkedin.com/company/springload-te-pipitanga/
 ---
 
 Using human-centred design, we make beautiful and useful digital products and experiences that enable change for good.

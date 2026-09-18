@@ -1,7 +1,7 @@
 ---
 title: IITG Mechanical department
-first_published_at: "2021-06-12T09:46:52.514258+00:00"
-latest_revision_created_at: "2021-06-12T09:46:52.514258+00:00"
+first_published_at: '2021-06-12T09:46:52.514258+00:00'
+latest_revision_created_at: '2021-06-12T09:46:52.514258+00:00'
 site_url: https://iitg.ac.in/mech
 sector:
   - education

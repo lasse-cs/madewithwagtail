@@ -1,7 +1,7 @@
 ---
 title: The Vidocq Society
-first_published_at: "2025-05-21T05:17:27.162060+12:00"
-latest_revision_created_at: "2025-09-10T04:55:59.977672+12:00"
+first_published_at: '2025-05-21T05:17:27.162060+12:00'
+latest_revision_created_at: '2025-09-10T04:55:59.977672+12:00'
 site_url: https://vidocq.org
 ---
 

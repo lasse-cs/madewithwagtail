@@ -1,7 +1,7 @@
 ---
 title: Welcome to Stockholm
-first_published_at: "2022-01-08T14:54:46.082175+13:00"
-latest_revision_created_at: "2022-01-08T14:54:45.987846+13:00"
+first_published_at: '2022-01-08T14:54:46.082175+13:00'
+latest_revision_created_at: '2022-01-08T14:54:45.987846+13:00'
 site_url: https://www.visitstockholm.com/
 sector:
   - travel

@@ -1,7 +1,7 @@
 ---
 title: U.S. Press Freedom Tracker
-first_published_at: "2017-08-07T15:29:07.854716+12:00"
-latest_revision_created_at: "2017-08-11T12:17:07.383834+12:00"
+first_published_at: '2017-08-07T15:29:07.854716+12:00'
+latest_revision_created_at: '2017-08-11T12:17:07.383834+12:00'
 site_url: https://pressfreedomtracker.us/
 sector:
   - technology

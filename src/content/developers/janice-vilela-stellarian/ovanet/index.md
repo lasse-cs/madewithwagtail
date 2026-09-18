@@ -1,7 +1,7 @@
 ---
 title: OvaNet
-first_published_at: "2025-11-20T07:56:47.155977+00:00"
-latest_revision_created_at: "2025-11-20T07:56:47.155977+00:00"
+first_published_at: '2025-11-20T07:56:47.155977+00:00'
+latest_revision_created_at: '2025-11-20T07:56:47.155977+00:00'
 site_url: https://www.ovanet.org/
 sector:
   - research

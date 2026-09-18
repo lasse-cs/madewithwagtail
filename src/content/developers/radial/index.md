@@ -1,12 +1,16 @@
 ---
 title: Radial
-first_published_at: "2021-12-08T15:33:25.561328+13:00"
-latest_revision_created_at: "2021-12-08T15:33:25.507345+13:00"
+first_published_at: '2021-12-08T15:33:25.561328+13:00'
+latest_revision_created_at: '2026-09-18T21:54:09.314716+00:00'
 location: Athens, Greece
-lat: "37.983810"
-lon: "23.727539"
+lat: '37.983810'
+lon: '23.727539'
 company_url: https://radial.gr/en/
-twitter_handler: "@RADIALize"
+twitter_handler: '@RADIALize'
+online_profiles:
+  - http://www.facebook.com/radial.gr
+  - https://www.instagram.com/radial.gr
+  - https://www.linkedin.com/company/radial/
 ---
 
 Radial is a digital creative studio based in Athens. We specialize in web design, development, and online marketing. We build, maintain, and promote websites since 2003.

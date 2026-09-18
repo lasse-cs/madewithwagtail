@@ -1,7 +1,7 @@
 ---
 title: Broadway Gallery
-first_published_at: "2025-10-07T13:27:23.815373+00:00"
-latest_revision_created_at: "2025-10-07T13:27:23.815373+00:00"
+first_published_at: '2025-10-07T13:27:23.815373+00:00'
+latest_revision_created_at: '2025-10-07T13:27:23.815373+00:00'
 site_url: https://www.broadway-gallery.com
 sector:
   - culture

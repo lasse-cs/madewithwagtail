@@ -1,7 +1,7 @@
 ---
 title: Keystone Tasmania
-first_published_at: "2022-07-13T11:55:25.586572+12:00"
-latest_revision_created_at: "2022-07-13T11:55:25.500448+12:00"
+first_published_at: '2022-07-13T11:55:25.586572+12:00'
+latest_revision_created_at: '2022-07-13T11:55:25.500448+12:00'
 site_url: https://keystone.com.au
 sector:
   - education

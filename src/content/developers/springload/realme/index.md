@@ -1,7 +1,7 @@
 ---
 title: RealMe
-first_published_at: "2015-07-28T09:10:35.098741+12:00"
-latest_revision_created_at: "2018-02-27T09:13:05.296079+13:00"
+first_published_at: '2015-07-28T09:10:35.098741+12:00'
+latest_revision_created_at: '2018-02-27T09:13:05.296079+13:00'
 site_url: https://www.realme.govt.nz/
 sector:
   - government

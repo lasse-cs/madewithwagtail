@@ -1,7 +1,7 @@
 ---
 title: Beat Eating Disorders
-first_published_at: "2026-03-26T12:24:15.529851+00:00"
-latest_revision_created_at: "2026-03-26T12:24:15.529851+00:00"
+first_published_at: '2026-03-26T12:24:15.529851+00:00'
+latest_revision_created_at: '2026-03-26T12:24:15.529851+00:00'
 site_url: https://www.beateatingdisorders.org.uk
 sector:
   - non-profit

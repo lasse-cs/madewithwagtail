@@ -1,7 +1,7 @@
 ---
 title: Nerdy Trust
-first_published_at: "2021-12-08T15:49:03.532603+13:00"
-latest_revision_created_at: "2021-12-08T15:49:03.469156+13:00"
+first_published_at: '2021-12-08T15:49:03.532603+13:00'
+latest_revision_created_at: '2021-12-08T15:49:03.469156+13:00'
 site_url: https://nerdytrust.com/
 ---
 

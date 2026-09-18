@@ -1,12 +1,12 @@
 ---
 title: Siddharth Adelkar
-first_published_at: "2017-11-21T19:02:17.306997+13:00"
-latest_revision_created_at: "2017-11-21T19:07:19.133952+13:00"
+first_published_at: '2017-11-21T19:02:17.306997+13:00'
+latest_revision_created_at: '2026-09-18T21:55:01.751115+00:00'
 location: Mumbai, India
-lat: "19.046880"
-lon: "72.826646"
+lat: '19.046880'
+lon: '72.826646'
 company_url: https://ruralindiaonline.org/
-twitter_handler: "@PARInetwork"
+twitter_handler: '@PARInetwork'
 github_user: PARINetwork
 ---
 

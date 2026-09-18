@@ -1,7 +1,7 @@
 ---
 title: Aeriform Archive
-first_published_at: "2023-09-19T17:06:21.710310+12:00"
-latest_revision_created_at: "2023-09-19T17:28:26.875443+12:00"
+first_published_at: '2023-09-19T17:06:21.710310+12:00'
+latest_revision_created_at: '2023-09-19T17:28:26.875443+12:00'
 site_url: https://aeriform-archive.org/
 sector:
   - arts

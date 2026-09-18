@@ -1,7 +1,7 @@
 ---
 title: Zucker Salz und Pfeffer Agency
-first_published_at: "2023-11-09T13:35:58.124471+00:00"
-latest_revision_created_at: "2023-11-09T13:35:58.124471+00:00"
+first_published_at: '2023-11-09T13:35:58.124471+00:00'
+latest_revision_created_at: '2023-11-09T13:35:58.124471+00:00'
 site_url: https://zuckersalzundpfeffer.de/
 capability:
   - headless

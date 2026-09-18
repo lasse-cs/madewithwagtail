@@ -1,7 +1,7 @@
 ---
 title: Samaritans
-first_published_at: "2021-09-27T14:27:04.806067+00:00"
-latest_revision_created_at: "2021-09-27T14:27:04.806067+00:00"
+first_published_at: '2021-09-27T14:27:04.806067+00:00'
+latest_revision_created_at: '2021-09-27T14:27:04.806067+00:00'
 site_url: https://www.samaritans.org/
 sector:
   - non-profit
@@ -19,6 +19,6 @@ As part of our growing relationship with Samaritans we overhauled their main pub
 
 - A listing in Charity Digital's Ten of the best charity and non-profit websites.
 
-We’ve since become their key digital transformation partner, supporting them through a period of radical digital transformation. 
+We’ve since become their key digital transformation partner, supporting them through a period of radical digital transformation.
 
 “I can confidently say this project wouldn’t have gone as well in the hands of any other agency. The team at Torchbox understood our needs and in many cases anticipated them. They helped keep our focus on our users and what Samaritans can do to help them either find support, or support us.” Michael Keating, Samaritans Head of Digital.

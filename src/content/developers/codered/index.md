@@ -1,13 +1,16 @@
 ---
 title: CodeRed
-first_published_at: "2019-09-19T19:14:57.721169+12:00"
-latest_revision_created_at: "2019-09-19T19:14:57.686822+12:00"
+first_published_at: '2019-09-19T19:14:57.721169+12:00'
+latest_revision_created_at: '2026-09-18T21:48:08.385125+00:00'
 location: Cleveland, Ohio, USA
-lat: "41.500180"
-lon: "-81.696032"
+lat: '41.500180'
+lon: '-81.696032'
 company_url: https://www.coderedcorp.com/
-twitter_handler: "@coderedcorp"
+twitter_handler: '@coderedcorp'
 github_user: coderedcorp
+online_profiles:
+  - https://github.com/coderedcorp/coderedcms
+  - https://www.linkedin.com/company/codered
 ---
 
 Cleveland-based technology firm specializing in secure web development and cloud services.

@@ -1,7 +1,7 @@
 ---
 title: Brand Tasmania
-first_published_at: "2021-10-05T17:51:10.198772+13:00"
-latest_revision_created_at: "2023-09-19T17:32:47.571264+12:00"
+first_published_at: '2021-10-05T17:51:10.198772+13:00'
+latest_revision_created_at: '2023-09-19T17:32:47.571264+12:00'
 site_url: https://tasmanian.com.au/
 sector:
   - arts

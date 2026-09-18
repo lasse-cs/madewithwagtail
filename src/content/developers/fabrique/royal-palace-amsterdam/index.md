@@ -1,7 +1,7 @@
 ---
 title: Royal Palace Amsterdam
-first_published_at: "2018-07-14T00:31:29.478443+12:00"
-latest_revision_created_at: "2018-07-14T00:31:29.428695+12:00"
+first_published_at: '2018-07-14T00:31:29.478443+12:00'
+latest_revision_created_at: '2018-07-14T00:31:29.428695+12:00'
 site_url: https://www.paleisamsterdam.nl/en/
 sector:
   - travel

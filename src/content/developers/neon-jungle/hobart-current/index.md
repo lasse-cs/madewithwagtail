@@ -1,7 +1,7 @@
 ---
 title: Hobart Current
-first_published_at: "2020-06-24T18:26:49.514738+12:00"
-latest_revision_created_at: "2020-06-25T12:26:30.152326+12:00"
+first_published_at: '2020-06-24T18:26:49.514738+12:00'
+latest_revision_created_at: '2020-06-25T12:26:30.152326+12:00'
 site_url: https://hobartcurrent.com/
 sector:
   - arts

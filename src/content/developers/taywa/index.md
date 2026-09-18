@@ -1,12 +1,12 @@
 ---
 title: Taywa
-first_published_at: "2018-03-06T15:38:54.112660+13:00"
-latest_revision_created_at: "2018-03-06T15:38:54.077763+13:00"
+first_published_at: '2018-03-06T15:38:54.112660+13:00'
+latest_revision_created_at: '2026-09-18T21:55:32.932051+00:00'
 location: Zurich, Switzerland
-lat: "47.393222"
-lon: "8.523508"
+lat: '47.393222'
+lon: '8.523508'
 company_url: https://www.taywa.ch
-twitter_handler: "@taywa_ch"
+twitter_handler: '@taywa_ch'
 github_user: taywa
 ---
 

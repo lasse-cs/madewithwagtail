@@ -1,7 +1,7 @@
 ---
 title: The Chief I/O
-first_published_at: "2021-10-13T17:13:05.425084+13:00"
-latest_revision_created_at: "2021-10-13T17:13:05.337028+13:00"
+first_published_at: '2021-10-13T17:13:05.425084+13:00'
+latest_revision_created_at: '2021-10-13T17:13:05.337028+13:00'
 site_url: https://thechief.io/c/
 site_type:
   - blog

@@ -1,7 +1,7 @@
 ---
 title: Metro Boutique App
-first_published_at: "2025-10-27T16:43:27.748779+00:00"
-latest_revision_created_at: "2025-10-27T16:43:27.748779+00:00"
+first_published_at: '2025-10-27T16:43:27.748779+00:00'
+latest_revision_created_at: '2025-10-27T16:43:27.748779+00:00'
 site_url: https://www.metroboutique.ch/
 sector:
   - consumer

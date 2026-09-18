@@ -1,7 +1,7 @@
 ---
 title: Bow Valley SPCA
-first_published_at: "2018-06-29T16:27:40.708130+12:00"
-latest_revision_created_at: "2018-06-29T16:27:40.667153+12:00"
+first_published_at: '2018-06-29T16:27:40.708130+12:00'
+latest_revision_created_at: '2018-06-29T16:27:40.667153+12:00'
 site_url: https://www.bowvalleyspca.org/
 sector:
   - non-profit

@@ -1,12 +1,12 @@
 ---
 title: NASA JPL
-first_published_at: "2021-12-12T06:14:30.293583+13:00"
-latest_revision_created_at: "2021-12-12T06:14:30.240075+13:00"
+first_published_at: '2021-12-12T06:14:30.293583+13:00'
+latest_revision_created_at: '2026-09-18T21:52:47.072950+00:00'
 location: Pasadena, California, US
-lat: "34.20288755903142"
-lon: "-118.1714181654724"
+lat: '34.20288755903142'
+lon: '-118.1714181654724'
 company_url: https://www.jpl.nasa.gov/
-twitter_handler: "@NASAJPL"
+twitter_handler: '@NASAJPL'
 github_user: nasa-jpl
 ---
 
