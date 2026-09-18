@@ -47,6 +47,18 @@ export function formatLastUpdated(iso) {
   return date ? dateFormatter.format(new Date(date)) : null;
 }
 
+const monthYearFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+// 'December 2024', or null when there is no valid date to show.
+export function formatListedSince(iso) {
+  const date = normalizeDate(iso);
+  return date ? monthYearFormatter.format(new Date(date)) : null;
+}
+
 function parseField(markdown, field) {
   const match = markdown.match(new RegExp(`^${field}:\\s*["']?([^\\s"']+)["']?\\s*$`, 'm'));
   return match ? match[1] : null;

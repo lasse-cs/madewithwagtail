@@ -6,7 +6,7 @@ import Icon from '../../components/Icon.astro';
 import SiteCard from '../../components/SiteCard.astro';
 import { absoluteUrl, markdownExcerpt, withBase } from '../../helpers.ts';
 import { lookupImage } from '../../images.ts';
-import { formatLastUpdated, latestDate } from '../../lastmod.mjs';
+import { formatLastUpdated, formatListedSince, latestDate } from '../../lastmod.mjs';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { breadcrumbListNode, organizationNode } from '../../schema.ts';
 
@@ -46,6 +46,16 @@ const lastUpdated = formatLastUpdated(
   latestDate(devSites.map((site) => site.data.latest_revision_created_at)),
 );
 
+// When a profile has no bio, fall back to a generated description so every
+// developer page has self-contained prose (and a meta description).
+const siteCountLabel = `${devSites.length} ${devSites.length === 1 ? 'site' : 'sites'}`;
+const fallbackBio = !developer.body
+  ? `${developer.data.title} is a Wagtail developer${developer.data.location ? ` based in ${developer.data.location}` : ''} with ${siteCountLabel} on Made with Wagtail.`
+  : undefined;
+
+// The profile's "Listed since" date is when it was first published.
+const listedSince = formatListedSince(developer.data.first_published_at);
+
 function getCooperator(cooperatorSlug: string) {
   return devMap.get(cooperatorSlug);
 }
@@ -58,7 +68,7 @@ const jsonLd = [
     path: profilePath,
     name: developer.data.title,
     companyUrl: developer.data.company_url,
-    description: markdownExcerpt(developer.body),
+    description: markdownExcerpt(developer.body) ?? fallbackBio,
     logo: logo?.src ?? null,
     location: developer.data.location,
     lat: developer.data.lat,
@@ -75,7 +85,7 @@ const jsonLd = [
 
 <BaseLayout
   title={developer.data.title}
-  description={markdownExcerpt(developer.body)}
+  description={markdownExcerpt(developer.body) ?? fallbackBio}
   jsonLd={jsonLd}
 >
   <div class="site-content content-width">
@@ -137,9 +147,9 @@ const jsonLd = [
       </div>
     </div>
 
-    {developer.body && (
+    {(developer.body || fallbackBio) && (
       <div class="company__description">
-        <Content />
+        {developer.body ? <Content /> : <p>{fallbackBio}</p>}
       </div>
     )}
 
@@ -175,6 +185,7 @@ const jsonLd = [
       </div>
     </div>
 
+    {listedSince && <p class="last-updated">Listed since: {listedSince}</p>}
     {lastUpdated && <p class="last-updated">Last updated: {lastUpdated}</p>}
   </div>
 </BaseLayout>
