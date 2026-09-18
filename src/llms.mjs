@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FACETS, facetValues } from './facets.ts';
 
 // Build-time generator for /llms.txt (https://llmstxt.org), listing what the
 // showcase is, its current size, and its entry points — so AI tools get an
@@ -11,20 +12,6 @@ import { fileURLToPath } from 'node:url';
 // src/lastmod.mjs) so they always match the published site.
 
 const SITE_URL = 'https://madewithwagtail.org';
-
-// Facet routes -> the site collection field they filter on. Mirrors
-// src/facets.ts (which can't be imported here: it's an Astro module).
-const FACETS = [
-  ['sector', 'sector'],
-  ['type', 'site_type'],
-  ['capability', 'capability'],
-];
-
-const facetSlug = (value) =>
-  value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
 
 // Values of a frontmatter list field, in both YAML spellings:
 // 'sector:\n  - Education\n  - ...' and 'sector:\n- Education\n- ...'
@@ -46,11 +33,8 @@ function scanContent() {
     return counts;
   }
 
-  const facetValues = new Map();
-  for (const [facet] of FACETS) {
-    facetValues.set(facet, new Map());
-    counts.facets[facet] = [];
-  }
+  // Site entries as plain data, ready for facetValues().
+  const sites = [];
 
   for (const dev of readdirSync(base, { withFileTypes: true })) {
     if (!dev.isDirectory()) continue;
@@ -64,25 +48,16 @@ function scanContent() {
       counts.sites += 1;
       // Frontmatter only: between the opening and closing '---' lines.
       const frontmatter = readFileSync(siteIndex, 'utf8').split(/^---$/m)[1] ?? '';
-      for (const [facet, field] of FACETS) {
-        const values = facetValues.get(facet);
-        for (const value of parseFrontmatterList(frontmatter, field)) {
-          const slug = facetSlug(value);
-          const existing = values.get(slug);
-          if (existing) {
-            existing.count += 1;
-          } else {
-            values.set(slug, { slug, display: value, count: 1 });
-          }
-        }
-      }
+      sites.push({
+        data: Object.fromEntries(
+          Object.values(FACETS).map((field) => [field, parseFrontmatterList(frontmatter, field)]),
+        ),
+      });
     }
   }
 
-  for (const [facet, values] of facetValues) {
-    counts.facets[facet] = [...values.values()].sort(
-      (a, b) => b.count - a.count || a.display.localeCompare(b.display),
-    );
+  for (const facet of Object.keys(FACETS)) {
+    counts.facets[facet] = facetValues(facet, sites);
   }
   return counts;
 }
@@ -97,7 +72,7 @@ function facetSection(name, values) {
   return `## Sites by ${label}\n\n${lines.join('\n')}`;
 }
 
-export function buildLlmsTxt({ siteUrl = SITE_URL } = {}) {
+export function buildLlmsTxt() {
   const counts = scanContent();
   const facetCount = Object.values(counts.facets).reduce((sum, v) => sum + v.length, 0);
 
@@ -110,10 +85,10 @@ export function buildLlmsTxt({ siteUrl = SITE_URL } = {}) {
 
     `## Browse
 
-- [All sites](${siteUrl}/): every showcased site, most recently updated first.
-- [Sites by sector, type, and capability](${siteUrl}/sites/): hub for all ${facetCount} facet collections.
-- [Developers](${siteUrl}/developers/): ${counts.developers} agencies and individual developers who build with Wagtail, each with a profile and site portfolio.
-- [Search](${siteUrl}/search/): full-text search across the showcase.`,
+- [All sites](${SITE_URL}/): every showcased site, most recently updated first.
+- [Sites by sector, type, and capability](${SITE_URL}/sites/): hub for all ${facetCount} facet collections.
+- [Developers](${SITE_URL}/developers/): ${counts.developers} agencies and individual developers who build with Wagtail, each with a profile and site portfolio.
+- [Search](${SITE_URL}/search/): full-text search across the showcase.`,
 
     facetSection('sector', counts.facets.sector),
     facetSection('type', counts.facets.type),
@@ -121,7 +96,7 @@ export function buildLlmsTxt({ siteUrl = SITE_URL } = {}) {
 
     `## Submit a site
 
-[Submission form](${siteUrl}/submit-your-site/) — opens a GitHub issue that triggers automated validation and a review pull request.`,
+[Submission form](${SITE_URL}/submit-your-site/) — opens a GitHub issue that triggers automated validation and a review pull request.`,
 
     `## Source
 

@@ -3,10 +3,6 @@ import { absoluteUrl } from './helpers.ts';
 // Builders for the JSON-LD nodes rendered by BaseLayout's `jsonLd` prop.
 // Nodes are @context-free: the layout wraps them in a single @graph.
 
-export interface EntityRef {
-  '@id': string;
-}
-
 // Site-wide entity nodes, referenced from every page via @id:
 // the showcase (WebSite) and the project behind it (Organization).
 export function siteEntityNodes() {
@@ -18,7 +14,7 @@ export function siteEntityNodes() {
       url,
       name: 'Made with Wagtail',
       description: 'A showcase of sites made with Wagtail, the popular Django CMS.',
-      publisher: { '@id': `${url}#organization` } satisfies EntityRef,
+      publisher: { '@id': `${url}#organization` },
     },
     {
       '@type': 'Organization',
@@ -54,7 +50,7 @@ export function collectionPageNode({
     '@id': `${url}#webpage`,
     url,
     name,
-    isPartOf: { '@id': `${absoluteUrl('/')}#website` } satisfies EntityRef,
+    isPartOf: { '@id': `${absoluteUrl('/')}#website` },
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: items.map((item, index) => ({
@@ -116,8 +112,8 @@ export function creativeWorkNode({
     datePublished: datePublished || undefined,
     dateModified: dateModified || undefined,
     keywords: keywords.length > 0 ? keywords.join(', ') : undefined,
-    creator: creatorId ? ({ '@id': creatorId } satisfies EntityRef) : undefined,
-    publisher: { '@id': `${absoluteUrl('/')}#organization` } satisfies EntityRef,
+    creator: creatorId ? { '@id': creatorId } : undefined,
+    publisher: { '@id': `${absoluteUrl('/')}#organization` },
   };
 }
 

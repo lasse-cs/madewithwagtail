@@ -12,7 +12,7 @@ export const getStaticPaths = (async () => {
   const allSites = await getCollection('sites');
   const paths: {
     params: { facet: string; value: string };
-    props: { display: string; facetLabel: string; count: number };
+    props: { display: string; facetLabel: string };
   }[] = [];
   for (const facet of Object.keys(FACETS) as FacetKey[]) {
     for (const facetValue of facetValues(facet, allSites)) {
@@ -21,7 +21,6 @@ export const getStaticPaths = (async () => {
         props: {
           display: facetValue.display,
           facetLabel: facetLabel(facet),
-          count: facetValue.count,
         },
       });
     }

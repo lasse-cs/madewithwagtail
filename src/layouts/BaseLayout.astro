@@ -1,5 +1,5 @@
 ---
-import { withBase } from '../helpers.ts';
+import { absoluteUrl, withBase } from '../helpers.ts';
 import { siteEntityNodes } from '../schema.ts';
 import '../styles/screen.scss';
 
@@ -29,15 +29,19 @@ const pageTitle = title ? `${title} | Made with Wagtail` : 'Made with Wagtail';
 const pageDescription =
   description ?? 'A showcase of sites made with Wagtail, the popular Django CMS.';
 
-// Social crawlers only follow absolute image and page URLs. Falls back to the
-// site URL without a protocol in development, where Astro.site is unset.
-const toAbsoluteUrl = (path: string): string => {
-  const url = new URL(withBase(path), Astro.site ?? 'https://madewithwagtail.org');
-  return url.href;
+// Default social image (the Wagtail bird on the brand dark green) for pages
+// without a more specific one: homepage, listings, developer profiles.
+const defaultOgImage = {
+  src: '/og-default.png',
+  width: 1200,
+  height: 630,
+  type: 'image/png',
+  alt: 'Made with Wagtail',
 };
+const effectiveOgImage = ogImage ?? defaultOgImage;
 
-const ogImageUrl = ogImage ? toAbsoluteUrl(ogImage.src) : undefined;
-const canonicalUrl = toAbsoluteUrl(canonical ?? Astro.url.pathname);
+const ogImageUrl = absoluteUrl(effectiveOgImage.src);
+const canonicalUrl = absoluteUrl(canonical ?? Astro.url.pathname);
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 

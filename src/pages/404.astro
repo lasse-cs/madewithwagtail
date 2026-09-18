@@ -14,17 +14,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     <div class="intro">
       <p>Try one of these instead:</p>
-      <ul class="list-none">
-        <li>
-          <p><a class="btn -small" href={withBase('/')}>Browse all sites</a></p>
-        </li>
-        <li>
-          <p><a class="btn -small" href={withBase('/developers/')}>Find a Wagtail developer</a></p>
-        </li>
-        <li>
-          <p><a class="btn -small" href={withBase('/submit-your-site/')}>Submit your site</a></p>
-        </li>
-      </ul>
+      <div class="btn-group">
+        <a class="btn -small" href={withBase('/')}>Browse all sites</a>
+        <a class="btn -small" href={withBase('/developers/')}>Find a Wagtail developer</a>
+        <a class="btn -small" href={withBase('/submit-your-site/')}>Submit your site</a>
+      </div>
     </div>
   </div>
 </BaseLayout>

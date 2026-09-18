@@ -63,12 +63,13 @@ function getCooperator(cooperatorSlug: string) {
 // Structured data: the developer as an Organization, plus the breadcrumb
 // trail (Home > Developers > <Developer>).
 const profilePath = `/developers/${developer.id}/`;
+const pageDescription = markdownExcerpt(developer.body) ?? fallbackBio;
 const jsonLd = [
   organizationNode({
     path: profilePath,
     name: developer.data.title,
     companyUrl: developer.data.company_url,
-    description: markdownExcerpt(developer.body) ?? fallbackBio,
+    description: pageDescription,
     logo: logo?.src ?? null,
     location: developer.data.location,
     lat: developer.data.lat,
@@ -83,11 +84,7 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout
-  title={developer.data.title}
-  description={markdownExcerpt(developer.body) ?? fallbackBio}
-  jsonLd={jsonLd}
->
+<BaseLayout title={developer.data.title} description={pageDescription} jsonLd={jsonLd}>
   <div class="site-content content-width">
     <Breadcrumbs ancestors={[{ title: 'Developers', url: withBase('/developers/') }]} />
 
