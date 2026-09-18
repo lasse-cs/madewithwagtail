@@ -81,7 +81,9 @@ const ogImage = screenshot
         </div>
       </div>
       <div class="one-third--medium">
-        <h2>{siteEntry.data.title}</h2>
+        {/* The site title is the page's primary heading; styled via .h2 to
+            keep the established visual hierarchy. */}
+        <h1 class="h2">{siteEntry.data.title}</h1>
         <p class="project-author project-author--block">
           Made by{' '}
           {parentDev ? (
