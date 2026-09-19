@@ -63,8 +63,8 @@ let pagefind: Pagefind | null = null;
 
 async function loadPagefind(): Promise<Pagefind | null> {
   try {
-    const url = '/pagefind/pagefind.js';
-    return (await import(/* @vite-ignore */ url)) as Pagefind;
+    // @ts-expect-error Pagefind generates this module after the Astro build.
+    return (await import('/pagefind/pagefind.js')) as Pagefind;
   } catch {
     return null;
   }

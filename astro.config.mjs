@@ -43,6 +43,12 @@ export default defineConfig({
   // Serve content images as-is: no resizing, re-encoding, or format conversion.
   image: { service: passthroughImageService() },
   vite: {
+    build: {
+      rolldownOptions: {
+        // Pagefind generates this browser module after the Astro build.
+        external: ['/pagefind/pagefind.js'],
+      },
+    },
     css: {
       lightningcss: {
         errorRecovery: true,
