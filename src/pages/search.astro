@@ -63,9 +63,15 @@ let pagefind: Pagefind | null = null;
 
 async function loadPagefind(): Promise<Pagefind | null> {
   try {
+    // Astro 7 inlines this <script> before Vite replaces `__VITE_PRELOAD__`.
+    // A real `import()` is rewritten to use that marker and then throws
+    // `ReferenceError` on the live site (https://github.com/withastro/astro/issues/17265).
+    // Building the importer at runtime keeps Vite from rewriting it.
     const url = '/pagefind/pagefind.js';
-    return (await import(/* @vite-ignore */ url)) as Pagefind;
-  } catch {
+    const load = new Function('url', 'return import(url)') as (url: string) => Promise<Pagefind>;
+    return await load(url);
+  } catch (error) {
+    console.error('Failed to load search', error);
     return null;
   }
 }
