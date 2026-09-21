@@ -1,1 +1,1 @@
-Hospitals, health systems, and healthcare organisations use Wagtail for patient-facing information and public health campaigns. Reviewable workflows, granular permissions, and accessibility support matter where clinical accuracy and compliance are non-negotiable.
+Hospitals, health systems, and healthcare organisations use Wagtail for patient-facing information and public health campaigns. Reviewable workflows, granular permissions, and accessibility support matter a lot where accuracy and compliance are non-negotiable.

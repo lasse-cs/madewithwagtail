@@ -1,1 +1,1 @@
-Technology companies use Wagtail for marketing sites, documentation, and product content. Built with Python and Django, it is highly customisable, plays well with modern front-end stacks, and is easy to staff — many of these sites were built in-house.
+Technology companies use Wagtail for marketing sites, documentation, and product content. Built with Python and Django, it is highly customisable, plays well with modern front-end stacks, and is easy to recruit for.

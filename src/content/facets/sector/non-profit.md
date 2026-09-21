@@ -1,1 +1,1 @@
-Charities and nonprofits are the largest sector in this showcase. Mission-driven organisations choose Wagtail for zero licensing fees, accessibility by default, and an editor that non-technical staff can own — whether they are publishing campaign landing pages, fundraising appeals, or multilingual content.
+Mission-driven organisations choose Wagtail for zero licensing fees, accessibility by default, and an editor that non-technical staff will love. It works to publish campaign landing pages, fundraising appeals, or multilingual content.

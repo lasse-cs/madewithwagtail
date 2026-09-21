@@ -1,1 +1,1 @@
-Schools, colleges, universities, and research groups use Wagtail for everything from prospectuses to departmental sites. Editorial workflows and granular permissions suit large academic teams, multisite support keeps many sites in one place, and accessibility comes built in.
+Schools, colleges, universities, and research groups use Wagtail for everything from one-off campaigns to departmental sites. Editorial workflows and granular permissions suit large academic teams, multisite support keeps many sites in one place, and accessibility comes built in.
