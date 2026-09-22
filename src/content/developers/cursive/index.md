@@ -9,4 +9,6 @@ online_profiles:
   - https://www.linkedin.com/company/cursive-works/
   - https://github.com/cursive-works
   - https://www.instagram.com/cursive.works/
+lat: '53.960653'
+lon: '-1.082083'
 ---
