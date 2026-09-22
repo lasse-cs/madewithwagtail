@@ -54,9 +54,12 @@ $search-field-height: 2.5rem;
 
 .search-form {
   @extend %nice-line-length;
+  // Keep the field and submit button on one row, attached to each other.
+  display: flex;
 
   input[type='search'] {
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
     height: $search-field-height;
     border-end-end-radius: 0;
     border-start-end-radius: 0;
