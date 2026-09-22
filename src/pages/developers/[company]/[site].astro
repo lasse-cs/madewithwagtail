@@ -39,6 +39,19 @@ const coopDev = siteEntry.data.in_cooperation_with_slug
 
 const lastUpdated = formatLastUpdated(siteEntry.data.latest_revision_created_at);
 
+// Search index allowlist: only these pages are indexed, and only their
+// description text is indexed as body content. Title, author, and tags are
+// attached as searchable metadata (data-pagefind-meta) so excerpts stay
+// clean. These data-pagefind-body attributes also switch Pagefind into
+// allowlist mode site-wide, so pages without one (listings, pagination,
+// the homepage…) are not indexed at all.
+const pageAuthor = parentDev?.data.title ?? coopDev?.data.title ?? 'A Wagtail developer';
+const pageTags = [
+  ...siteEntry.data.sector,
+  ...siteEntry.data.site_type,
+  ...siteEntry.data.capability,
+];
+
 // Social preview uses the site's screenshot, when there is one.
 const ogImage = screenshot
   ? {
@@ -120,8 +133,8 @@ const jsonLd = [
       <div class="one-third--medium">
         {/* The site title is the page's primary heading; styled via .h2 to
             keep the established visual hierarchy. */}
-        <h1 class="h2">{siteEntry.data.title}</h1>
-        <p class="project-author project-author--block">
+        <h1 class="h2" data-pagefind-meta="title">{siteEntry.data.title}</h1>
+        <p class="project-author project-author--block" data-pagefind-meta={`author:${pageAuthor}`}>
           Made by{' '}
           {parentDev ? (
             <a href={withBase(`/developers/${parentDev.id}/`)}>{parentDev.data.title}</a>
@@ -136,7 +149,11 @@ const jsonLd = [
           )}
         </p>
 
-        <div class="text">
+        <div
+          class="text"
+          data-pagefind-body
+          data-pagefind-meta={`description:${pageDescription ?? ''}`}
+        >
           <Content />
         </div>
 
@@ -158,19 +175,31 @@ const jsonLd = [
           siteEntry.data.capability.length > 0) && (
           <>
             <hr>
-            <div class="btn-group">
+            <div class="btn-group" data-pagefind-meta={`tags:${pageTags.join(', ')}`}>
               {siteEntry.data.sector.map((value: string) => (
-                <a href={withBase(`/sites/sector/${facetSlug(value)}/`)} class="btn -tag">
+                <a
+                  href={withBase(`/sites/sector/${facetSlug(value)}/`)}
+                  class="btn -tag"
+                  data-pagefind-filter="tags"
+                >
                   {value}
                 </a>
               ))}
               {siteEntry.data.site_type.map((value: string) => (
-                <a href={withBase(`/sites/type/${facetSlug(value)}/`)} class="btn -tag">
+                <a
+                  href={withBase(`/sites/type/${facetSlug(value)}/`)}
+                  class="btn -tag"
+                  data-pagefind-filter="tags"
+                >
                   {value}
                 </a>
               ))}
               {siteEntry.data.capability.map((value: string) => (
-                <a href={withBase(`/sites/capability/${facetSlug(value)}/`)} class="btn -tag">
+                <a
+                  href={withBase(`/sites/capability/${facetSlug(value)}/`)}
+                  class="btn -tag"
+                  data-pagefind-filter="tags"
+                >
                   {value}
                 </a>
               ))}

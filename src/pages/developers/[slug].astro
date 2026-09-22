@@ -27,6 +27,10 @@ export const getStaticPaths = (async () => {
 
 const { developer, logo } = Astro.props;
 
+// Search index: this profile is indexed with its description as body
+// content, and its title as searchable metadata — see the
+// data-pagefind-* attributes in the markup below.
+
 // A developer's sites: those in their own directory, plus sites they
 // contributed to via in_cooperation_with_slug.
 const devSites = (await getCollection('sites')).filter((site) => {
@@ -103,7 +107,9 @@ const jsonLd = [
         </div>
       )}
       <div class="company__details">
-        <h1 class="company__title">{developer.data.title}</h1>
+        <h1 class="company__title" data-pagefind-meta="title,author">
+          {developer.data.title}
+        </h1>
         <ul class="company__info">
           {developer.data.location && (
             <li class="company__info__item">
@@ -145,7 +151,11 @@ const jsonLd = [
     </div>
 
     {(developer.body || fallbackBio) && (
-      <div class="company__description">
+      <div
+        class="company__description"
+        data-pagefind-body
+        data-pagefind-meta={`description:${pageDescription ?? ''}`}
+      >
         {developer.body ? <Content /> : <p>{fallbackBio}</p>}
       </div>
     )}

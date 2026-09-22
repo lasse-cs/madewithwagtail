@@ -55,7 +55,16 @@ const status = document.querySelector('[data-search-status]') as HTMLElement;
 const results = document.querySelector('[data-search-results]') as HTMLElement;
 
 type PagefindResult = {
-  data: () => Promise<{ url: string; excerpt: string; meta: { title?: string } }>;
+  data: () => Promise<{
+    url: string;
+    excerpt: string;
+    meta: {
+      title?: string;
+      author?: string;
+      description?: string;
+      tags?: string;
+    };
+  }>;
 };
 type Pagefind = { search: (query: string) => Promise<{ results: PagefindResult[] }> };
 
@@ -81,7 +90,16 @@ function renderMessage(message: string) {
   status.hidden = false;
 }
 
-function renderResults(items: { url: string; excerpt: string; meta: { title?: string } }[]) {
+// Results are rendered from Pagefind's allowlisted metadata
+// (title, author, description, tags) — see the data-pagefind-* attributes
+// on the site and developer pages.
+function renderResults(
+  items: {
+    url: string;
+    excerpt: string;
+    meta: { title?: string; author?: string; description?: string; tags?: string };
+  }[],
+) {
   results.innerHTML = '';
   for (const item of items) {
     const element = document.createElement('div');
@@ -92,10 +110,23 @@ function renderResults(items: { url: string; excerpt: string; meta: { title?: st
     link.href = item.url;
     link.textContent = item.meta.title ?? item.url;
     title.append(link);
+    element.append(title);
+    if (item.meta.author && item.meta.author !== item.meta.title) {
+      const author = document.createElement('p');
+      author.className = 'search-results__author';
+      author.textContent = `Made by ${item.meta.author}`;
+      element.append(author);
+    }
     const excerpt = document.createElement('p');
     excerpt.className = 'search-results__description';
     excerpt.innerHTML = item.excerpt;
-    element.append(title, excerpt);
+    element.append(excerpt);
+    if (item.meta.tags) {
+      const tags = document.createElement('p');
+      tags.className = 'search-results__tags';
+      tags.textContent = item.meta.tags;
+      element.append(tags);
+    }
     results.append(element);
   }
 }

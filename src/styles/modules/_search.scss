@@ -35,6 +35,17 @@
   color: $color-base-font;
 }
 
+.search-results__author {
+  margin-bottom: rem(4);
+  color: $color-base-font;
+}
+
+.search-results__tags {
+  margin-bottom: rem(0);
+  font-size: rem(14);
+  color: $color-base-font;
+}
+
 .search-box {
   @extend %vertical-bottom-l;
 }
