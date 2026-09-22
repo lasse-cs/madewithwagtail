@@ -28,9 +28,9 @@ check:
 build:
     npm run build
 
-# Run the development server at localhost:4321.
+# Run the development server.
 serve:
-    npm run dev --background
+    npm run dev
 
 # Run the submission pipeline tests.
 test-submissions:
