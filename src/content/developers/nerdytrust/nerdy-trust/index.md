@@ -5,6 +5,6 @@ latest_revision_created_at: '2021-12-08T15:49:03.469156+13:00'
 site_url: https://nerdytrust.com/
 ---
 
-Somos ‚Äúsocios expertos‚ nos involucramos a fondo y vamos de la mano contigo para alcanzar el exito de tus proyectos. Nuestro equipo esta conformado por los mejores en su campo.Nuestra din√°mica de trabajo y nuestra capacidad de analisis nos permite definir con precision el alcance de los proyectos, lo cual nos lleva a entregar siempre en tiempo y forma.
+We are expert partners: we get deeply involved and work hand in hand with you to make your projects a success. Our team is made up of the best in their field. Our way of working and our analytical skills let us define project scope precisely, so we always deliver on time and as promised.
 
-Somos practicos y hablamos en idioma. No mas confusiones, obten siempre lo que quieres y necesitas para tu negocio.
+We are practical and we speak your language. No more confusion — always get what you want and need for your business.

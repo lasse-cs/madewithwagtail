@@ -7,4 +7,4 @@ sector:
   - government
 ---
 
-Sitio web de la municipalidad de San José de Maipo. Chile.-
+Website for the municipality of San José de Maipo, Chile.

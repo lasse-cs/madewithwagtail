@@ -12,4 +12,4 @@ online_profiles:
   - https://github.com/fcotton
 ---
 
-Codeur en série repenti / Responsable de systèmes d'information sous la contrainte / Photographe amateur de machins pas très beaux
+Reformed serial coder / reluctant information systems manager / amateur photographer of not-very-pretty things

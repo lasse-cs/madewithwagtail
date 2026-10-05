@@ -7,4 +7,4 @@ site_url: https://www.hivetire.com
 
 Driving Fleets Through Data
 
-Plataforma digital para el Control y Administración de los neumáticos de las flotas de transporte. Optimiza la gestión de tus neumáticos reduciendo el costo por kilómetro.
+Digital platform for the control and administration of tyres across transport fleets. Optimise your tyre management by reducing the cost per kilometre.

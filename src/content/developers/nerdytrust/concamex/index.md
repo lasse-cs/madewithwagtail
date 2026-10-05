@@ -7,4 +7,4 @@ sector:
   - non-profit
 ---
 
-Sitio especializado en dar información y servicio a las asociaciones autónomas de personas que se han unido voluntariamente para hacer frente a sus necesidades y aspiraciones económicas, sociales y culturales comunes por medio de una empresa de propiedad conjunta y democráticamente controlada.
+A specialised site providing information and services to autonomous associations of people who have voluntarily joined together to meet their shared economic, social and cultural needs and aspirations through a jointly-owned, democratically-controlled enterprise.

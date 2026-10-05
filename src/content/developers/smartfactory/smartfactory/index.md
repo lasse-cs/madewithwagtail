@@ -7,4 +7,4 @@ site_type:
   - product
 ---
 
-Smartfactory ist eine Agentur in der Schweiz, die Apps und Websites programmiert.
+Smartfactory is an agency in Switzerland that builds apps and websites.

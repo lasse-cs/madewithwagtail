@@ -12,4 +12,4 @@ capability:
 
 Lingovo is a Wagtail and Django-powered agency for professional translations by native speakers - uncomplicated and fast.
 
-Lingovo offers numerous language combinations and many different services such as website translation. Lingovo ist eine Wagtail und Django-powered Agentur für professionelle Übersetzungen durch Muttersprachler - unkompliziert und schnell. Lingovo bietet zahlreiche Sprachkombinationen und viele verschiedene Dienstleistungen wie z.B. Webseitenübersetzung.
+Lingovo offers numerous language combinations and many different services such as website translation.
